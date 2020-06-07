@@ -15,6 +15,6 @@
     iam_type: group
     iam_name: "{{ item.created_group.group_name }}"
     policy_name: "READ-ONLY"
-    policy_document: readonlypolicy.json
+    policy_document: files/Full_ReadList_Limited_WriteTagging.json
     state: present
   loop: "{{ new_groups.results }}"
