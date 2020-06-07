@@ -3,12 +3,15 @@
 - name: Create Two Groups, Mario and Luigi
   iam:
     iam_type: group
-    name: "{{ item }}"
+    name: "{{ item.name }}"
     state: present
-  loop:
-     - Mario
-     - Luigi
+  #loop:
+   #  - Mario
+    # - Luigi
   #register: new_groups
+  with_items:
+     - { name: "Mario, Luigi, Group1, Group2" }
+     
   register: group_name
 
 - name: Apply READ-ONLY policy to new groups that have been recently created
