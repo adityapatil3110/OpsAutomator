@@ -10,9 +10,10 @@
     # - Luigi
   #register: new_groups
   with_items:
-     - { name: "Mario, Luigi, Group1, Group2" }
-     
-  register: group_name
+     #- { name: "Mario, Luigi, Group1, Group2" }
+     - { name: "{{ group_names }}" }
+
+  register: group_names
 
 - name: Apply READ-ONLY policy to new groups that have been recently created
   iam_policy:
