@@ -9,7 +9,8 @@
      - Mario
      - Luigi
   register: new_groups
-
+  register: group_name
+  
 - name: Apply READ-ONLY policy to new groups that have been recently created
   iam_policy:
     iam_type: group
