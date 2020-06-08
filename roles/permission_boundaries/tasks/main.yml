@@ -1,6 +1,6 @@
 # Advanced example, create two new groups and add a READ-ONLY policy to both
 # groups.
-- name: Create Two Groups, Mario and Luigi
+- name: Create IAM Groups (Using extra variables from Job_Template)
   iam:
     iam_type: group
     name: "{{ item.name }}"
@@ -15,7 +15,7 @@
 
   register: group_names
 
-- name: Apply READ-ONLY policy to new groups that have been recently created
+- name: Apply (Full_ReadList_Limited_WriteTagging) policy to new groups that have been recently created
   iam_policy:
     iam_type: group
     iam_name: "{{ item.created_group.group_names }}"
