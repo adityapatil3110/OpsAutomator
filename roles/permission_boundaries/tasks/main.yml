@@ -13,13 +13,14 @@
      #- { name: "Mario, Luigi, Group1, Group2" }
      - { name: "{{ group_names }}" }
 
-  #register: group_names
+  register: group_names
 
 - name: Apply (Full_ReadList_Limited_WriteTagging) policy to new groups that have been recently created
   iam_policy:
     iam_type: group
-    iam_name: "{{ item.created_group.group_names }}"
+    iam_name: "{{ item.group_names }}"
+    #iam_name: "{{ item.created_group.group_names }}"
     policy_name: "READ-ONLY"
     policy_document: files/Full_ReadList_Limited_WriteTagging.json
     state: present
-  #loop: "{{ group_names.results }}"
+  loop: "{{ group_names.results }}"
