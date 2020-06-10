@@ -11,8 +11,7 @@
   #register: new_groups
   with_items:
      #- { name: "Mario, Luigi, Group1, Group2" }
-     - { name: "{{ group_names }}" }
-
+     - { name: group_names }
   register: group_names
 
 - name: Apply (Full_ReadList_Limited_WriteTagging) policy to new groups that have been recently created
