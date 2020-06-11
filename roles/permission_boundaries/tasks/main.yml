@@ -1,5 +1,5 @@
 #Test
-- name: Create IAM Groups 
+- name: "Create IAM Groups "
   iam:
     iam_type: group
     iam_name: "{{ item.name }}"
@@ -17,7 +17,7 @@
     #register: group_name
   
 
-- name: Apply (Full_ReadList_Limited_WriteTagging) policy to new groups that have been recently created
+- name: "Apply (Full_ReadList_Limited_WriteTagging) policy to new groups that have been recently created"
   iam_policy:
     iam_type: group
     iam_name: "{{ group_name }}"
