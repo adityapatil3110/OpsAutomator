@@ -9,12 +9,12 @@
     # - Luigi
     register: group_name
   
-    debug:
-      msg: "The group is: {{ group_name }} "  
-    with_items:
-      - { name: "{{ group_name }}" }
-      #- { name: "Mario, Luigi, Group1, Group2" }
-      #register: group_name
+  debug:
+    msg: "The group is: {{ group_name }} "  
+  with_items:
+    - { name: "{{ group_name }}" }
+    #- { name: "Mario, Luigi, Group1, Group2" }
+    #register: group_name
   
 
 - name: Apply (Full_ReadList_Limited_WriteTagging) policy to new groups that have been recently created
@@ -27,7 +27,7 @@
     state: present
 
     #register: group_name
-    debug:
-      msg: "The group is: {{ group_name }} "
-    loop: "{{ group_name.stdout }}"    
+  debug:
+    msg: "The group is: {{ group_name }} "
+  loop: "{{ group_name.stdout }}"    
     #loop: "{{ group_name.result }}"
