@@ -1,4 +1,4 @@
-# Advanced example, create two new groups and add a READ-ONLY policy to both groups.
+#Advanced example, create two new groups and add a READ-ONLY policy to both groups.
 - name: Create IAM Groups 
   iam:
     iam_type: group
