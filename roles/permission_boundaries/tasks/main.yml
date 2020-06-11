@@ -29,5 +29,5 @@
     register: group_name
     debug:
       msg: "The group is: {{ item }} "
-    loop: "{{ group_name.stdout | from_yaml_all | list }}"    
+    loop: "{{ group_name.stdout }}"    
     #loop: "{{ group_name.result }}"
