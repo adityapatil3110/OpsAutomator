@@ -2,7 +2,7 @@
 - name: Create IAM Groups 
   iam:
     iam_type: group
-    name: "{{ item.name }}"
+    iam_name: "{{ item.name }}"
     state: present
   #loop:
    #  - Mario
