@@ -7,12 +7,12 @@
   #loop:
    #  - Mario
     # - Luigi
-  register: group_name
+    register: group_name
   
-  debug:
-    msg: "The group is: {{ item }} "  
-  with_items:
-    - { name: "{{ group_name }}" }
+    debug:
+      msg: "The group is: {{ item }} "  
+    with_items:
+      - { name: "{{ group_name }}" }
      #- { name: "Mario, Luigi, Group1, Group2" }
      #register: group_name
   
