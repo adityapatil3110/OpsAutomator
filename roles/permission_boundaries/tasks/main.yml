@@ -1,5 +1,4 @@
-# Advanced example, create two new groups and add a READ-ONLY policy to both
-# groups.
+# Advanced example, create two new groups and add a READ-ONLY policy to both groups.
 - name: Create IAM Groups (Using extra variables from Job_Template)
   iam:
     iam_type: group
@@ -30,4 +29,4 @@
     debug:
       msg: "The group is: {{ item }} "
     loop: "{{ group_name.stdout | from_yaml_all | list }}"    
-  #loop: "{{ group_name.result }}"
+    #loop: "{{ group_name.result }}"
