@@ -1,5 +1,5 @@
 # Advanced example, create two new groups and add a READ-ONLY policy to both groups.
-- name: Create IAM Groups (Using extra variables from Job_Template)
+- name: Create IAM Groups 
   iam:
     iam_type: group
     name: "{{ item.name }}"
@@ -8,6 +8,7 @@
    #  - Mario
     # - Luigi
   register: group_name
+  
   debug:
     msg: "The group is: {{ item }} "  
   with_items:
