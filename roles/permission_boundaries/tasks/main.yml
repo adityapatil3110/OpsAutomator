@@ -12,7 +12,7 @@
   iam_policy:
     iam_type: user
     iam_name: "{{ item.user }}"
-    policy_name: "READ-ONLY"
+    policy_name: "TEST-POLICY"
     policy_document: files/TestPolicy.json
     state: present
   #loop: "{{ item.user.results }}"
