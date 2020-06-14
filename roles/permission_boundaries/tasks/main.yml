@@ -1,27 +1,20 @@
-#Test
-- name: Create IAM Groups
+# Advanced example, create two new groups and add a READ-ONLY policy to both
+# groups.
+- name: Create Two Groups, Mario and Luigi
   iam:
     iam_type: group
-    iam_name: "{{ item.gname }}"
+    name: "{{ item }}"
     state: present
+  loop:
+     - Mario
+     - Luigi
+  register: new_groups
 
-  register: group_name
-  debug:
-    msg: "The group is: {{ group_name }} "  
-  with_items:
-  - { gname: "{{ group_name }}" }
-
-- name: Apply (Full_ReadList_Limited_WriteTagging) policy to new groups that have been recently created
+- name: Apply READ-ONLY policy to new groups that have been recently created
   iam_policy:
     iam_type: group
-    iam_name: "{{ group_name }}"
-    #iam_name: "{{ item.created_group.group_names }}"
-    policy_name: "LimitedAccess"
-    policy_document: files/Full_ReadList_Limited_WriteTagging.json
+    iam_name: "{{ item.created_group.group_name }}"
+    policy_name: "READ-ONLY"
+    policy_document: readonlypolicy.json
     state: present
-
-    #register: group_name
-  debug:
-    msg: "The group is: {{ group_name }} "
-  loop: "{{ group_name.stdout }}"    
-    #loop: "{{ group_name.result }}"
+  loop: "{{ new_groups.results }}"
