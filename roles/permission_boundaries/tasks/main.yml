@@ -8,7 +8,7 @@
      - Luigi
   register: created_group
 
-- name: Apply READ-ONLY policy to new groups that have been recently created
+- name: Apply READONLY policy to new groups that have been recently created
   iam_policy:
     iam_type: group
     iam_name: "{{ item.created_group }}"
