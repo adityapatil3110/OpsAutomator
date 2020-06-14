@@ -16,4 +16,3 @@
       policy_name: "TestPolicy"
       policy_document: files/TestPolicy.json
       state: present
-  register: 
