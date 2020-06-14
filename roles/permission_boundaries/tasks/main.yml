@@ -1,4 +1,4 @@
-- name: Create Two Groups, Mario and Luigi
+- name: "Create Two Groups, Mario and Luigi"
   iam:
     iam_type: user
     name: "{{ item.username }}"
