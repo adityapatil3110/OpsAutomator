@@ -1,10 +1,13 @@
+---
 - name: "Create Two Groups, Mario and Luigi"
   iam:
     iam_type: user
-    name: "{{ item.username }}"
+    name: "{{ item.user }}"
     state: present
-  with_items: "{{ username }}"
-  register: username
+  with_items: 
+    - { user: "{{ username }}" }
+
+  register: "{{ username }}"
 
 #- name: Apply READONLY policy to new groups that have been recently created
  # iam_policy:
