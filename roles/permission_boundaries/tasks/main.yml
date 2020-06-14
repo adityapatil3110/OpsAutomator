@@ -1,20 +1,16 @@
 - name: Create Two Groups, Mario and Luigi
-  gather_facts: True
   iam:
-    iam_type: group
-    name: "{{ item }}"
+    iam_type: user
+    name: "{{ item.username }}"
     state: present
-  loop:
-     - Mario
-     - Luigi
-  register: created_group
+  with_items: "{{ username }}"
+  register: username
 
-- name: Apply READONLY policy to new groups that have been recently created
-  gather_facts: True
-  iam_policy:
-    iam_type: group
-    iam_name: "{{ item.created_group }}"
-    policy_name: "READ-ONLY"
-    policy_document: readonlypolicy.json
-    state: present
-  loop: "{{ created_group.results }}"
+#- name: Apply READONLY policy to new groups that have been recently created
+ # iam_policy:
+  #  iam_type: group
+   # iam_name: "{{ item.created_group }}"
+    #policy_name: "READ-ONLY"
+    #policy_document: readonlypolicy.json
+    #state: present
+  #loop: "{{ created_group.results }}"
