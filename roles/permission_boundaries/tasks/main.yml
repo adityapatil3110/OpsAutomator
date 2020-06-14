@@ -7,7 +7,7 @@
   with_items: 
     - { user: "{{ username }}" }
 
-  register: "{{ user }}"
+  register: "{{ item.user }}"
 
 #- name: Apply READONLY policy to new groups that have been recently created
  # iam_policy:
