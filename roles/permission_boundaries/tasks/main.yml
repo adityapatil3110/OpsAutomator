@@ -1,5 +1,6 @@
 ---
-- name: "Create Two Groups, Mario and Luigi"
+tasks:
+- name: "Create a user and attach a policy to it"
   iam:
     iam_type: user
     name: "{{ item.user }}"
