@@ -4,7 +4,7 @@
     iam_type: user
     name: "{{ item.user }}"
     state: present
-  register: {{ user }}
+  register: "{{ user }}"
   with_items: 
     - { user: "{{ username }}" }
 
