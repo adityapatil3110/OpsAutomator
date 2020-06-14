@@ -1,6 +1,4 @@
----
-tasks:
-- name: "Create a user and attach a policy to it"
+- name: Create a user and attach a policy to it
   iam:
     iam_type: user
     name: "{{ item.user }}"
