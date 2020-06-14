@@ -8,7 +8,7 @@
      state: present
   with_items: 
      - { user: "{{ username }}" }
-  register:  "{{ username }}"
+  register: username
 - name: Attach policy to created user
   iam_policy:
       iam_type: user
