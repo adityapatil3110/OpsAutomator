@@ -6,13 +6,13 @@
   loop:
      - Mario
      - Luigi
-  register: new_groups
+  register: created_group
 
 - name: Apply READ-ONLY policy to new groups that have been recently created
   iam_policy:
     iam_type: group
-    iam_name: "{{ item.created_group.group_name }}"
+    iam_name: "{{ item.created_group }}"
     policy_name: "READ-ONLY"
     policy_document: readonlypolicy.json
     state: present
-  loop: "{{ new_groups.results }}"
+  loop: "{{ created_group.results }}"
