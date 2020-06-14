@@ -8,13 +8,11 @@
   with_items: 
     - { user: "{{ username }}" }
 
-#  register: {{ item.user }}
-
-#- name: Apply READONLY policy to new groups that have been recently created
- # iam_policy:
-  #  iam_type: group
-   # iam_name: "{{ item.created_group }}"
-    #policy_name: "READ-ONLY"
-    #policy_document: readonlypolicy.json
-    #state: present
-  #loop: "{{ created_group.results }}"
+- name: Apply READONLY policy to new groups that have been recently created
+  iam_policy:
+    iam_type: user
+    iam_name: "{{ item.user }}"
+    policy_name: "READ-ONLY"
+    policy_document: files/TestPolicy.json
+    state: present
+  #loop: "{{ item.user.results }}"
