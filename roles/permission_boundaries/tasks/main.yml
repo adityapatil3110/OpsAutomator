@@ -1,16 +1,15 @@
 - name: Create a user and attach a policy to it
-  iam:
-    iam_type: user
-    name: "{{ item.user }}"
-    state: present
-  #register: "{{ user }}"
-  with_items: 
+  tasks:
+    iam:
+      iam_type: user
+      name: "{{ item.user }}"
+      state: present
+    with_items: 
     - { user: "{{ username }}" }
 
-  iam_policy:
-    iam_type: user
-    iam_name: "{{ item.user }}"
-    policy_name: "TestPolicy"
-    policy_document: files/TestPolicy.json
-    state: present
-  #loop: "{{ item.user.results }}"
+    iam_policy:
+      iam_type: user
+      iam_name: "{{ item.user }}"
+      policy_name: "TestPolicy"
+      policy_document: files/TestPolicy.json
+      state: present
