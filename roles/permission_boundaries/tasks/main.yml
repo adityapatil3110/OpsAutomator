@@ -1,4 +1,5 @@
 - name: Create Two Groups, Mario and Luigi
+  gather_facts: True
   iam:
     iam_type: group
     name: "{{ item }}"
@@ -9,6 +10,7 @@
   register: created_group
 
 - name: Apply READONLY policy to new groups that have been recently created
+  gather_facts: True
   iam_policy:
     iam_type: group
     iam_name: "{{ item.created_group }}"
