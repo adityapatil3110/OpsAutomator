@@ -1,5 +1,5 @@
 ---
-- name: Create a user and attach a policy to it
+- name: Create an iam user
   iam:
      iam_type: user
      name: "{{ item.user }}"
@@ -7,6 +7,7 @@
      access_key_state: create
      state: present
   register: username
+- name: Apply policy to the created user
   iam_policy:
       iam_type: user
       iam_name: "{{ item.user }}"
