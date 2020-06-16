@@ -15,6 +15,7 @@
 
 
 - name: Apply policy to the created user
+  block:
   iam_policy:
       iam_type: user
       iam_name: "{{ user }}"
