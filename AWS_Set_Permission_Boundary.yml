@@ -2,6 +2,6 @@
 - hosts: localhost
   connection: local
   vars: 
-    - user: aditya
+    - user1: "aditya"
   roles:
     - {role: permission_boundaries}

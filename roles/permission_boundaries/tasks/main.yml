@@ -2,13 +2,9 @@
  - name: Create an iam user
    iam:
     iam_type: user
-    name: "{{ user }}"
-    #name: "{{ item }}"
-    password: "Admin@123"
-    access_key_state: create
+    name: "{{ user1 }}"
     state: present
    register: username
-  #with_items: users[0]
     
  - debug:
      msg: "{{ username }}"
@@ -17,7 +13,7 @@
  - name: Apply policy to the created user
    iam_policy:
     iam_type: user
-    iam_name: "{{ user }}"
+    iam_name: "{{ user1 }}"
     policy_name: "TestPolicy"
     policy_document: files/TestPolicy.json
     state: present
