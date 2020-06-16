@@ -20,4 +20,4 @@
    register: username
 
  - debug:
-     msg: "{{ username }}"
+     msg: username 
