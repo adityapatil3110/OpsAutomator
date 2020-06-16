@@ -4,4 +4,4 @@
   vars: 
     - user1: "aditya"
   roles:
-    - {role: permission_boundaries}
+    - {role: aws_permission_boundaries}
