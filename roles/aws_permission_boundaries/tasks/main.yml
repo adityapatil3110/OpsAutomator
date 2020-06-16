@@ -1,13 +1,13 @@
 ---
- - name: Create an iam user
-   iam:
-    iam_type: user
-    name: "{{ user1 }}"
-    state: present
-   register: username
+ #- name: Create an iam user
+  # iam:
+   # iam_type: user
+    #name: "{{ user1 }}"
+    #state: present
+   #register: username
     
- - debug:
-     msg: "{{ username }}"
+ #- debug:
+  #   msg: "{{ username }}"
 
 
  - name: Apply policy to the created user
