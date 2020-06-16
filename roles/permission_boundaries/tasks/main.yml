@@ -15,5 +15,5 @@
     iam_type: user
     iam_name: "{{ user1 }}"
     policy_name: "TestPolicy"
-    policy_document: files/TestPolicy.json
+    policy_document: Full_ReadList_Limited_WriteTagging.json
     state: present
