@@ -2,7 +2,7 @@
  - name: Create an iam user
    iam:
     iam_type: user
-    name: "{{ user1 }}"
+    name: "aditya"
     state: present
    register: username
     
@@ -13,7 +13,7 @@
  - name: Apply policy to the created user
    iam_policy:
     iam_type: user
-    iam_name: "{{ user1 }}"
+    iam_name: "aditya"
     policy_name: TestPolicy
     policy_document: files/testpolicy.json.j2
     state: present
