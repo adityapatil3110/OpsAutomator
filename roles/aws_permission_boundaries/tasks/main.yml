@@ -15,7 +15,7 @@
     iam_type: user
     iam_name: "{{ user1 }}"
     policy_name: TestPolicy
-    policy_document: files/testpolicy.json
+    policy_document: files/testpolicy.json.j2
     state: present
    #register: username
 
