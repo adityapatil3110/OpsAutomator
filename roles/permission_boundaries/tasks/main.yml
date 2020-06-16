@@ -7,7 +7,7 @@
    register: username
     
  - debug:
-     msg: "{{ user1 }}"
+     msg: "{{ username }}"
 
 
  - name: Apply policy to the created user
@@ -20,4 +20,4 @@
    register: username
 
  - debug:
-     msg: "{{ user1 }}"
+     msg: "{{ username }}"

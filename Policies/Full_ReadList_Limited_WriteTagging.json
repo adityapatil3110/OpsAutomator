@@ -2,7 +2,7 @@
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "ActionSetOne",
+            "Sid": "Action1",
             "Effect": "Allow",
             "Action": [
                 "ec2:RebootInstances",
@@ -21,7 +21,7 @@
             ]
         },
         {
-            "Sid": "ActionSet2",
+            "Sid": "Action2",
             "Effect": "Allow",
             "Action": [
                 "ec2:DescribeInstances",
