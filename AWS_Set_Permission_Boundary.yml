@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   connection: local
-  #vars: 
-  #  - user1: "aditya"
+  vars: 
+    - user1: "Tester"
   roles:
     - {role: aws_permission_boundaries}
