@@ -2,9 +2,10 @@
  - name: Create an iam user
    iam:
     iam_type: user
-    name: "{{ user1 }}"
+    name: "{{ item }}"
     state: present
    register: username
+   with_items: "{{ users }}"
     
  - debug:
      msg: "{{ username }}"
@@ -13,12 +14,10 @@
  - name: Apply policy to the created user
    iam_policy:
     iam_type: user
-    iam_name: "{{ user1 }}"
+    iam_name: "{{ item }}"
     policy_name: TestPolicy
     #policy_document: files/testpolicy.json.j2
     policy_json: "{{ lookup( 'file', 'files/TestPolicy.json') }}"
     state: present
-   register: username
-
- - debug:
-     msg: The user created is {{ username }}
+   register: policy
+   with_items: "{{ users }}"
