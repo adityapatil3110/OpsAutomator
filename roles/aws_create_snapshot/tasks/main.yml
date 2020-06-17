@@ -4,7 +4,7 @@
   register: command_output
 - debug: msg="{{command_output.stdout_lines}}"
 
-- debug: msg="{{ command_output | json_query('results[*]') }}"
+- debug: msg="{{ command_output | json_query('results[*].stdout_lines') }}"
 
 #- ec2_snapshot:
  #  region: "{{ region }}"
