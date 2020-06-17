@@ -8,4 +8,4 @@
     volume_id: "{{ item }}"
     region: "{{ region }}"
     description: Taking snapshot for the respected volumes 
-  with_items: "{{ command_output.stdout_lines }}"
+  with_items: "{{ command_output | json_query('results[*].stdout') }}"
