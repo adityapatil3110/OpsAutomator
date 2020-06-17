@@ -7,6 +7,6 @@
 - ec2_snapshot:
     volume_id: "{{ command_output }}"
     region: "{{ region }}"
-    description: Taking snapshot for the volume "{{ command_output }}"
-    register: snapshot_output
+    description: Taking snapshot for the respected volumes 
+  register: snapshot_output
 - debug: msg="{{ snapshot_output.stdout }}"
