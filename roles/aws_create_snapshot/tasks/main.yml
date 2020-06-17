@@ -1,6 +1,6 @@
 ---
 - name: Get the volume id's for creating the snapshot
-  command: aws ec2 describe-volumes --query Volumes[*].[VolumeId] --filters Name=tag:snapshot,Values=yes --output text
+  command: aws ec2 describe-volumes --region "{{ region }}" --query Volumes[*].[VolumeId] --filters Name=tag:snapshot,Values=yes --output text
   register: command_output
 - debug: msg="{{command_output.stdout}}"
 
