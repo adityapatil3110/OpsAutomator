@@ -5,8 +5,7 @@
 - debug: msg="{{command_output.stdout_lines}}"
 
 - ec2_snapshot:
-    volume_id: "{{ command_output.stdout_lines | list}}"
+    volume_id: "{{ item }}"
     region: "{{ region }}"
     description: Taking snapshot for the respected volumes 
-  register: snapshot_output
-- debug: msg="{{ snapshot_output.stdout }}"
+  with_items: "{{ command_output.stdout_lines }}"
