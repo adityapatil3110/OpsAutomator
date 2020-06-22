@@ -9,5 +9,5 @@
   with_items: "{{ command_output.stdout_lines }}" 
 
 - name: Create Snapshot of the listed disks
-  command: az snapshot create -g OpsAutomator  -n "{{ '_'.join((item, extension)) }}" --source "{{ item }}"
+  command: sudo az snapshot create -g "{{ resource_group }}"  -n "{{ '_'.join((item, extension)) }}" --source "{{ item }}"
   with_items: "{{ command_output.stdout_lines }}"
