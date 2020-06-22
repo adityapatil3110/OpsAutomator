@@ -1,6 +1,6 @@
 ---
 - name: Get the Disk Names having  from the VMS having tag snapshot==yes
-  command: az vm list --query "[?tags.snapshot=='yes'].storageProfile.dataDisks[].name" -o json && az vm list --query "[?tags.snapshot=='yes'].storageProfile.osDisk[].name" -o json
+  command: sudo az vm list --query "[?tags.snapshot=='yes'].storageProfile.dataDisks[].name" -o json && sudo az vm list --query "[?tags.snapshot=='yes'].storageProfile.osDisk[].name" -o json
   register: command1_output
 - debug: msg="{{command_output.stdout_lines}}"
 
