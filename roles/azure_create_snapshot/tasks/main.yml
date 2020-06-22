@@ -1,6 +1,6 @@
 ---
 - name: Get the Disk Names having  from the VMS having tag snapshot==yes
-  command: sudo az vm list --query "[?tags.snapshot=='yes'].storageProfile.dataDisks[].name" -o json && sudo az vm list --query "[?tags.snapshot=='yes'].storageProfile.osDisk[].name" -o json
+  command: az vm list -g "{{ resource_group }}" --query "[?tags.snapshot=='yes'].storageProfile.dataDisks[].name" -o json && az vm list -g "{{ resource_group }}" --query "[?tags.snapshot=='yes'].storageProfile.osDisk[].name" -o json
   register: command1_output
 - debug: msg="{{command_output.stdout_lines}}"
 
@@ -9,5 +9,5 @@
   with_items: "{{ command_output.stdout_lines }}" 
 
 - name: Create Snapshot of the listed disks
-  command: sudo az snapshot create -g "{{ resource_group }}"  -n "{{ '_'.join((item, extension)) }}" --source "{{ item }}"
+  command: az snapshot create -g "{{ resource_group }}"  -n "{{ '_'.join((item, extension)) }}" --source "{{ item }}"
   with_items: "{{ command_output.stdout_lines }}"
