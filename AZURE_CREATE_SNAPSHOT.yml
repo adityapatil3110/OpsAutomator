@@ -1,5 +1,5 @@
 ---
-- hosts: az_hostGCP
-  #connection: local
+- hosts: localhost
+  connection: local
   roles:
     - {role: azure_create_snapshot}
