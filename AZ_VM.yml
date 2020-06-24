@@ -1,4 +1,7 @@
 ---
+- hosts: localhost
+  connection: local
+
 - name: Get the Disk Names having  from the VMS having tag snapshot==yes
   command: az vm list -g "{{ resource_group }}" -o tsv
   register: command_output
