@@ -1,13 +1,19 @@
 ---
-- name: Get the Disk Names having  from the VMS having tag snapshot==yes
-  command: az vm list -g "{{ resource_group }}" --query "[?tags.snapshot=='yes'].storageProfile.dataDisks[].name" -o json && az vm list -g "{{ resource_group }}" --query "[?tags.snapshot=='yes'].storageProfile.osDisk[].name" -o json
-  register: command1_output
-- debug: msg="{{command_output.stdout_lines}}"
+#- name: Get the Disk Names having  from the VMS having tag snapshot==yes
+#  command: az vm list -g "{{ resource_group }}" --query "[?tags.snapshot=='yes'].storageProfile.dataDisks[].name" -o json && az vm list -g "{{ resource_group }}" --query "[?tags.snapshot=='yes'].storageProfile.osDisk[].name" -o json
+#  register: command1_output
+#- debug: msg="{{command_output.stdout_lines}}"
 
-- debug: 
-    msg: "{{ item }}"
-  with_items: "{{ command_output.stdout_lines }}" 
+#- debug: 
+#    msg: "{{ item }}"
+#  with_items: "{{ command_output.stdout_lines }}" 
 
-- name: Create Snapshot of the listed disks
-  command: az snapshot create -g "{{ resource_group }}"  -n "{{ '_'.join((item, extension)) }}" --source "{{ item }}"
-  with_items: "{{ command_output.stdout_lines }}"
+#- name: Create Snapshot of the listed disks
+#  command: az snapshot create -g "{{ resource_group }}"  -n "{{ '_'.join((item, extension)) }}" --source "{{ item }}"
+#  with_items: "{{ command_output.stdout_lines }}"
+
+- name: Create Snapshot using the shell script
+  script: files/az_snapshot_create.sh
+
+- debug:
+  msg: "Creating the snapshots"
