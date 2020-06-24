@@ -16,4 +16,4 @@
   script: files/az_snapshot_create.sh
 
 - debug:
-  msg: "Creating the snapshots"
+    msg: "Creating the snapshots"
