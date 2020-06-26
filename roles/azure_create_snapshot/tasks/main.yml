@@ -16,7 +16,7 @@
     src: template/az_snapshot_create.sh
     dest: /home/ansible/az_snapshot_create.sh
     owner: ansible
-    group: wheel
+    group: ansible
     mode: '0774'
 
 - name: Create Snapshot using the shell script
