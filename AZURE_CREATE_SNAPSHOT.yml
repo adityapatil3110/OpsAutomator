@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
-  connection: local
+- hosts: 104.198.136.146
+  #connection: local
   roles:
     - {role: azure_create_snapshot}
