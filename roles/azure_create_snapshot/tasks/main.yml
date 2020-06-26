@@ -13,7 +13,7 @@
 #  with_items: "{{ command_output.stdout_lines }}"
 
 - name: Create Snapshot using the shell script
-  script: files/az_snapshot_create.sh
+  shell: files/az_snapshot_create.sh
 
 - debug:
     msg: "Creating the snapshots"
