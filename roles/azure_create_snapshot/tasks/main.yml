@@ -11,9 +11,16 @@
 #- name: Create Snapshot of the listed disks
 #  command: az snapshot create -g "{{ resource_group }}"  -n "{{ '_'.join((item, extension)) }}" --source "{{ item }}"
 #  with_items: "{{ command_output.stdout_lines }}"
+- name: Template a file to /etc/files.conf
+  template:
+    src: template/az_snapshot_create.sh
+    dest: /home/ansible/az_snapshot_create.sh
+    owner: ansible
+    group: wheel
+    mode: '0774'
 
 - name: Create Snapshot using the shell script
-  shell: files/az_snapshot_create.sh
+  shell: /home/ansible/az_snapshot_create.sh
 
 - debug:
     msg: "Creating the snapshots"
