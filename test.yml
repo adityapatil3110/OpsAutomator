@@ -1,0 +1,9 @@
+---
+- name: Query Azure for VM data
+  azure_rm_virtualmachine_info:
+    resource_group: "{{ group }}"
+  register: vm_facts
+  ignore_errors: true
+
+- debug:
+  msg: "{{ vm_facts }}"
