@@ -1,7 +1,7 @@
 ---
-- hosts: localhost
-  connection: local
-  
+- hosts: 104.198.136.146
+  #connection: local
+
 - name: Query Azure for VM data
   azure_rm_virtualmachine_info:
     resource_group: "{{ group }}"
