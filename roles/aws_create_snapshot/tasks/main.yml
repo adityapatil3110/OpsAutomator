@@ -1,20 +1,20 @@
 ---
-#- name: Get the volume IDs on the basis of tags and create their respective snapshots
- # command: aws ec2 describe-volumes --region "{{ region }}" --query Volumes[*].[VolumeId] --filters Name=tag:snapshot,Values=yes --output text
-  #register: command_output
-#- debug: msg="{{command_output.stdout_lines}}"
-
 - name: Get the volume IDs on the basis of tags and create their respective snapshots
-  command: aws ec2 describe-instances --region "{{ region }}" --query Instances[*].[InstanceId] --filters Name=tag:snapshot,Values=yes --output text
+  command: aws ec2 describe-volumes --region "{{ region }}" --query Volumes[*].[VolumeId] --filters Name=tag:snapshot,Values=yes --output text
   register: command_output
 - debug: msg="{{command_output.stdout_lines}}"
 
-#- debug: 
- #   msg: "{{ item }}"
-  #with_items: "{{ command_output.stdout_lines }}" 
+#- name: Get the volume IDs on the basis of tags and create their respective snapshots
+ # command: aws ec2 describe-instances --region "{{ region }}" --query Instances[*].[InstanceId] --filters Name=tag:snapshot,Values=yes --output text
+  #register: command_output
+#- debug: msg="{{command_output.stdout_lines}}"
 
-#- ec2_snapshot:
- #   volume_id: "{{ item }}"
-  #  region: "{{ region }}"
-   # description: Taking snapshot for the respected volumes 
-  #with_items: "{{ command_output.stdout_lines }}"
+- debug: 
+    msg: "{{ item }}"
+  with_items: "{{ command_output.stdout_lines }}" 
+
+- ec2_snapshot:
+    volume_id: "{{ item }}"
+    region: "{{ region }}"
+    description: Taking snapshot for the respected volumes 
+  with_items: "{{ command_output.stdout_lines }}"
