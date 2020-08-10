@@ -9,3 +9,4 @@
  #   msg: "{{ item }}"
   #with_items: "{{ command_output.stdout_lines }}" 
 - ec2_snapshot_info:
+  region: "{{ aws_region }}"
