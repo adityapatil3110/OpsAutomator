@@ -14,4 +14,4 @@
     state: present
     tags:
       Expiry: Month
-  loop: '{{ ec2_snapshot.snapshots }}'
+  loop: '{{ ec2_snapshot.snapshot_id }}'
