@@ -7,11 +7,5 @@
 #- debug: 
  #   msg: "{{command_output.stdout_lines}}"
 
-- name: Ensure all snapshots are tagged
-  ec2_tag:
-    region:  us-west-2
-    resource: '{{ item.id }}'
-    state: present
-    tags:
-      Expiry: Month
-  loop: '{{ ec2_snapshot.snapshot_id }}'
+- name: Ensure required tags are present on snapshots
+  command: aws ec2 describe-snapshots --query "'Snapshots[?!not_null(Tags[?Key == `Expiry`].Value) && !not_null(Tags[?Key == `Email`].Value)].[SnapshotId, OwnerId]'"
