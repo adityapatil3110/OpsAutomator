@@ -8,7 +8,7 @@
  #   msg: "{{command_output.stdout_lines}}"
 
 - name: Ensure required tags are present on snapshots
-  command: aws ec2 describe-snapshots --region "{{ region }}" --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].[SnapshotId, OwnerId, Tags]" --output text
+  command: aws ec2 describe-snapshots --region "{{ region }}" --owner-ids 091071993733 --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value)].[SnapshotId, OwnerId, Tags]" --output text
   
   register: ensured_snapshot_details
 
