@@ -19,7 +19,7 @@
     state: present
   register: ensure_recipient_id
 
-- debug: msg="{{ ensure_recipient_id.stdout_lines }}"
+- debug: msg="{{ensure_recipient_id.stdout_lines}}"
 
 - name: Ensure the SES Sender Identity
   aws_ses_identity:
@@ -28,7 +28,7 @@
     state: present
   register: ensure_sender_id
 
-- debug: msg="{{ ensure_sender_id.stdout_lines }}"
+- debug: msg="{{ensure_sender_id.stdout_lines}}"
 
 
 
