@@ -12,7 +12,25 @@
   register: ensured_snapshot_details
 - debug: msg="{{ensured_snapshot_details.stdout_lines}}"
 
-- debug:
-    msg: "{{ item }}"
-  with_items: "{{ ensured_snapshot_details.stdout_lines }}"
+- name: Ensure the SES Recipient Identity
+  aws_ses_identity:
+    identity: gcptesting4534@gmail.com
+    state: present
+  register: ensure_recipient_id
+
+- debug: msg="{{ ensure_recipient_id.stdout_lines }}"
+
+- name: Ensure the SES Sender Identity
+  aws_ses_identity:
+    identity: patiladi3110@gmail.com
+    state: present
+  register: ensure_sender_id
+
+- debug: msg="{{ ensure_sender_id.stdout_lines }}"
+
+
+
+#- debug:
+ #   msg: "{{ item }}"
+  #with_items: "{{ ensured_snapshot_details.stdout_lines }}"
   
