@@ -14,6 +14,7 @@
 
 - name: Ensure the SES Recipient Identity
   aws_ses_identity:
+    region: "{{ region }}"
     identity: gcptesting4534@gmail.com
     state: present
   register: ensure_recipient_id
@@ -22,6 +23,7 @@
 
 - name: Ensure the SES Sender Identity
   aws_ses_identity:
+    region: "{{ region }}"
     identity: patiladi3110@gmail.com
     state: present
   register: ensure_sender_id
