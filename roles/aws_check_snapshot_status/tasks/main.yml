@@ -42,7 +42,7 @@
 
 - name: Send the Email
   when: sender.identity.exists and reciever.identity.exists 
-  script: files/ses.py {{ sender_identity }} {{ reciever_identity }} {{ region }}
+  shell: python files/ses.py {{ sender_identity }} {{ reciever_identity }} {{ region }}
 
 
 #- debug:
