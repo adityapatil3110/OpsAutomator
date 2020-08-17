@@ -10,9 +10,9 @@
 # FINDING UNTAGGED SNAPSHOTS 
 ###################################################################################################################################################################################################################################################################################### 
 - name: Ensure required tags are present on snapshots
-  command: aws ec2 describe-snapshots --region "{{ region }}" --owner-ids self --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].{"'SnapShotID:'"SnapshotId, "'OwnerID:'"OwnerId, "'Tags:'"Tags}" --output json
+  command: aws ec2 describe-snapshots --region "{{ region }}" --owner-ids self --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].{"'SnapShotID:'"SnapshotId, "'OwnerID:'"OwnerId, "'Tags:'"Tags, "'StartTime:'"StartTime}"
   register: ensured_snapshot_details
-- debug: msg="{{ensured_snapshot_details | to_json}}"
+- debug: msg="{{ensured_snapshot_details}}"
 
 ######################################################################################################################################################################################################################################################################################
 # VERIFYING THE SOURCE AND DESTINITION EMAIL IDs IN AWS SES
