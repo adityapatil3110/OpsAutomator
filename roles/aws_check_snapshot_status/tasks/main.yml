@@ -23,7 +23,7 @@
     region: "{{ region }}"
     identity: "{{ reciever_identity }}"
     state: present
-  register: ensure_recipient_id
+  register: ensure_reciever
 
 #- debug: msg="{{ensure_recipient_id.stdout_lines}}"
 
@@ -32,7 +32,7 @@
     region: "{{ region }}"
     identity: "{{ sender_identity }}"
     state: present
-  register: ensure_sender_id
+  register: ensure_sender
 
 #- debug: msg="{{ensure_sender_id.stdout_lines}}"
 
@@ -41,7 +41,7 @@
 ######################################################################################################################################################################################################################################################################################
 
 - name: Send the Email 
-  when: ensure_recipient_id.identity.exists and ensure_sender_id.identity.exists
+  when: ensure_sender.identity.exists and ensure_reciever.identity.exists 
   script: files/ses.py {{ sender_identity }} {{ reciever_identity }} {{ region }}
 
 
