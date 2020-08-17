@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
-  connection: local
+  #connection: local
+  become: true
   roles:
     - {role: aws_check_snapshot_status}
