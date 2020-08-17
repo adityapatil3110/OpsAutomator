@@ -7,20 +7,20 @@ from botocore.exceptions import ClientError
 
 # Replace sender@example.com with your "From" address.
 # This address must be verified with Amazon SES.
-SENDER = "patiladi3110@gmail.com" #"{{ sender_identity }}"
-
+SENDER = "{{ sender_identity }}"
+#"patiladi3110@gmail.com" 
 # Replace recipient@example.com with a "To" address. If your account 
 # is still in the sandbox, this address must be verified.
-RECIPIENT = "gcptesting4534@gmail.com" #"{{ reciever_identity }}"
-
+RECIPIENT = "{{ reciever_identity }}"
+#"gcptesting4534@gmail.com" #
 # Specify a configuration set. If you do not want to use a configuration
 # set, comment the following variable, and the 
 # ConfigurationSetName=CONFIGURATION_SET argument below.
 #CONFIGURATION_SET = "ConfigSet"
 
 # If necessary, replace us-west-2 with the AWS Region you're using for Amazon SES.
-AWS_REGION = "us-east-2" #"{{ region }}"
-
+AWS_REGION = "{{ region }}"
+#"us-east-2" #
 # The subject line for the email.
 SUBJECT = "Warning for Untagged Snapshots"
 

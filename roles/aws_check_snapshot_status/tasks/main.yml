@@ -42,10 +42,9 @@
 
 - name: Send the Email 
   when: ensure_recipient_id.identity.exists and ensure_sender_id.identity.exists
-
+  script: files/ses.py {{ sender_identity }} {{ reciever_identity }} {{ region }}
 
 
 #- debug:
  #   msg: "{{ item }}"
   #with_items: "{{ ensured_snapshot_details.stdout_lines }}"
-  
