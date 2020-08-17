@@ -15,7 +15,7 @@
 - debug: msg="{{ensured_snapshot_details.stdout_lines}}"
 
 - name: Create a file to store the Untagged Snapshot Report
-  local_action: copy content={{ ensured_snapshot_details.stdout_lines}} dest=templates/UntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.iso8601) }}.json
+  local_action: copy content={{ ensured_snapshot_details.stdout_lines}} dest=templates/UntaggedSnapshotReport"{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.iso8601) }}".json
 
 #- debug: 
   #timestamp: "{{ ansible_date_time.iso8601_micro }}"
