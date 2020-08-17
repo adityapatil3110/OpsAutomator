@@ -12,13 +12,13 @@
 - name: Ensure required tags are present on snapshots
   command: aws ec2 describe-snapshots --region "{{ region }}" --owner-ids self --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].{"'SnapShotID:'"SnapshotId, "'OwnerID:'"OwnerId, "'Tags:'"Tags, "'StartTime:'"StartTime}" --output text
   register: ensured_snapshot_details
-- debug: msg="{{ ensured_snapshot_details.stdout_lines }}"
+- debug: msg="{{ensured_snapshot_details.stdout_lines}}"
 
 - debug:
     msg: "{{ item }}"
     with_items: "{{ ensured_snapshot_details.stdout_lines }}"
 
-#- name: Create a file to store the Untagged Snapshot Report
+- name: Create a file to store the Untagged Snapshot Report
   #local_action: copy content={{ ensured_snapshot_details.stdout_lines}} dest=template/UntaggedSnapshotReport"{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}".json
   copy:
       dest: "/home/centos/UntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}"
