@@ -25,7 +25,7 @@
     state: present
   register: reciever
 
-- debug: msg="{{reciever | json_query('[].identity')}}"}}"
+- debug: msg="{{reciever | json_query('[].identity')}}"
 
 - name: Ensure the SES Sender Identity
   aws_ses_identity:
