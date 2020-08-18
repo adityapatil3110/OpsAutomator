@@ -27,7 +27,7 @@
   register: result
 
 - debug: 
-    var: "{{ result['results'][0]['dest'].files }}"
+    var: "{{ result['results'][0]['dest'] }}"
  
 
 #- set_fact: 
