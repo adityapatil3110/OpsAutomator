@@ -24,8 +24,9 @@
       dest: "/home/centos/UntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.csv"
       content: "{{ item }}"
   with_items: "{{ ensured_snapshot_details.stdout_lines }}"
+- debug: msg="{{ result.stdout | from_json }}"
   register: filename
-- debug: dest_filname="{{ filename | from_json | json_query("['dest']") }}"
+- debug: dest_filname="{{ filename.dest }}" #| from_json | json_query("['dest']") }}"
 
 #- debug: 
   #timestamp: "{{ ansible_date_time.iso8601_micro }}"
