@@ -27,7 +27,8 @@
 - set_fact: 
     dataresult: "{{result.stdout | from_json}}"
 
-- debug: msg="{{ dataresult.[0].dest }}" #| from_json | json_query("['dest']") }}"
+- debug: 
+  msg: "{{ dataresult.[0].dest }}" 
 
 #- debug: 
   #timestamp: "{{ ansible_date_time.iso8601_micro }}"
