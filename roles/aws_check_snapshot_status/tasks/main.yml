@@ -26,7 +26,8 @@
   with_items: "{{ ensured_snapshot_details.stdout_lines }}"
   register: result
 
-- debug: filename="{{ result['results'][0]['dest'] }}"
+- debug: 
+    var: "{{ result['results'][0]['dest'] }}"
  
 
 #- set_fact: 
