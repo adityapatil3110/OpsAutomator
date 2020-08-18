@@ -28,7 +28,7 @@
     dataresult: "{{result.stdout | from_json}}"
 
 - debug: 
-  msg: "{{ dataresult.[0].dest }}" 
+    msg: "{{ dataresult.[0].dest }}" 
 
 #- debug: 
   #timestamp: "{{ ansible_date_time.iso8601_micro }}"
