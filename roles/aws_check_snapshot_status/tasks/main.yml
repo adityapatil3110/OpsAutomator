@@ -27,7 +27,7 @@
   register: result
 
 - debug:
-    msg: "{{result | json_query(['dest'])}}"
+    msg: "{{result}}"
 
 #- set_fact: 
  #   dataresult: "{{result.stdout | from_json}}"
