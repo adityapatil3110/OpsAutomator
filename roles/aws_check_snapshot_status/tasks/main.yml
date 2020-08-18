@@ -27,8 +27,7 @@
   register: result
 
 - debug:
-    msg: "{{ result.stdout }}"
-  #loop: "{{ lookup('dict', msg) }}"
+    msg: "{{ result['results'] }}"
 
 #- set_fact: 
  #   dataresult: "{{result.stdout | from_json}}"
