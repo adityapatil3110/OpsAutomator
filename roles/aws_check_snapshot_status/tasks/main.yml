@@ -27,7 +27,7 @@
   register: result
 
 - debug:
-    msg: "{{ result[0] }}"
+    msg: "{{ result | first }}"
 
 #- set_fact: 
  #   dataresult: "{{result.stdout | from_json}}"
