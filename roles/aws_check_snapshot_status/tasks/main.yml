@@ -16,18 +16,17 @@
 
 - debug:
     msg: "{{ item }}"
-  with_items: "{{ ensured_snapshot_details.stdout_lines }}"
+  with_items: "{{ ensured_snapshot_details.stdout_lines | list }}"
 
-- name: Create a file to store the Untagged Snapshot Report
+#- name: Create a file to store the Untagged Snapshot Report
   #local_action: copy content={{ ensured_snapshot_details.stdout_lines}} dest=template/UntaggedSnapshotReport"{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}".json
-  copy:
-      dest: "/home/centos/UntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.csv"
-      content: "{{ item }}"
-  with_items: "{{ ensured_snapshot_details.stdout_lines }}"
-  register: result
+ # copy:
+  #    dest: "/home/centos/UntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.csv"
+   #   content: "{{ item }}"
+  #with_items: "{{ ensured_snapshot_details.stdout_lines }}"
+  #register: result
 
-- debug: 
-    var: "{{ result['results'][0]['dest'] }}"
+##   var: "{{ result['results'][0]['dest'] }}"
  
 
 #- set_fact: 
