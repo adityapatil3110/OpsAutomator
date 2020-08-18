@@ -25,7 +25,7 @@
       content: "{{ item }}"
   with_items: "{{ ensured_snapshot_details.stdout_lines }}"
   register: filename
-- debug: msg="{{filename | json_query("'dest'")}}"
+- debug: msg="{{filename | json_query("['dest']")}}"
 
 #- debug: 
   #timestamp: "{{ ansible_date_time.iso8601_micro }}"
