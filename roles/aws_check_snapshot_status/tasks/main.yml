@@ -17,7 +17,7 @@
 - debug: msg="{{ensured_snapshot_details.stdout_lines | join(', ')}}"
 
 - debug:
-    msg: "{{ item }}"
+    msg: "{{ item[0] }}"
   with_items: 
     - "{{ ensured_snapshot_details.stdout_lines | join(', ') }}"
 
