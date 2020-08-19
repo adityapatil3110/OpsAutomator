@@ -10,7 +10,7 @@
 # FINDING UNTAGGED SNAPSHOTS 
 ###################################################################################################################################################################################################################################################################################### 
 - name: Ensure required tags are present on snapshots
-  command: aws ec2 describe-snapshots --region "{{ region }}" --owner-ids self --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].{"'SnapshotID:'"SnapshotId, "'OwnerId:'"OwnerId, "'StartTime:'"StartTime}" --output text
+  command: aws ec2 describe-snapshots --region "{{ region }}" --owner-ids self --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].{SnapshotId, OwnerId, StartTime}" --output text
   register: ensured_snapshot_details
 - debug: msg="{{ensured_snapshot_details.stdout_lines}}"
 
