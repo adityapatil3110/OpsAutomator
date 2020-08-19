@@ -37,31 +37,31 @@
 # VERIFYING THE SOURCE AND DESTINITION EMAIL IDs IN AWS SES
 ######################################################################################################################################################################################################################################################################################
 
-#- name: Ensure the SES Recipient Identity
- # aws_ses_identity:
-  #  region: "{{ region }}"
-   # identity: "{{ reciever_identity }}"
-    #state: present
-  #register: reciever
+- name: Ensure the SES Recipient Identity
+  aws_ses_identity:
+    region: "{{ region }}"
+    identity: "{{ reciever_identity }}"
+    state: present
+  register: reciever
 
-#- debug: msg="{{reciever}}"
+- debug: msg="{{reciever}}"
 
-#- name: Ensure the SES Sender Identity
- # aws_ses_identity:
-  #  region: "{{ region }}"
-   # identity: "{{ sender_identity }}"
-    #state: present
-  #register: sender
+- name: Ensure the SES Sender Identity
+  aws_ses_identity:
+    region: "{{ region }}"
+    identity: "{{ sender_identity }}"
+    state: present
+  register: sender
 
-#- debug: msg="{{sender}}"
+- debug: msg="{{sender}}"
 
 ######################################################################################################################################################################################################################################################################################
 # SENDING THE EMAIL
 ######################################################################################################################################################################################################################################################################################
 
-#- name: Send the based on th conditions check
- # when: sender and reciever
-  #script: files/ses.py {{ sender_identity }} {{ reciever_identity }} {{ region }}
-
+- name: Send the based on th conditions check
+  when: sender and reciever
+  script: files/ses1.py {{ sender_identity }} {{ reciever_identity }} {{ region }} {{ item }}
+- with_items: "{{ result['results'][0]['dest'] }}"
 
 

@@ -12,15 +12,15 @@ SENDER = sys.argv[1]
 RECIPIENT = sys.argv[2]
 AWS_REGION = sys.argv[3]
 SUBJECT = "Reporting Untagged Snapshots"
-ATTACHMENT = "report.csv"
-BODY_TEXT = "Hello,\r\nPlease see the attached file for a list of customers to contact."
+ATTACHMENT = sys.argv[4]
+BODY_TEXT = "Hello,\r\nThis mail is for the reporting of Non-Compliant Snapshots which do not have required tags."
  
 BODY_HTML = """\
 <html>
 <head></head>
 <body>
 <h4>Hello Admin,</h4>
-<p>Please refer to the attached excel sheet for the report.</p>
+<p>Please refer to the attached excel sheet for the Non-Compliant Snapshot Report.</p>
 <h4>Regards,</h4>
 <h5>Kunal</h5>
 </body>
