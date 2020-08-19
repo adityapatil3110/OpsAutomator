@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: 35.225.93.179
   #connection: local
   become: true
   roles:
