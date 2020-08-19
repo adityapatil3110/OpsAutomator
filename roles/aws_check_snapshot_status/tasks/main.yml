@@ -26,8 +26,9 @@
   with_items: "{{ ensured_snapshot_details.stdout_lines | join(', ') }}"
   register: result
 
-- debug:  
-    msg: "The Report is generated at: {{ result['results'][0]['dest'].stdout }}"
+- debug:
+    msg: "{{ result.stdout }}"  
+    #msg: "The Report is generated at: {{ result['results'][0]['dest'] }}"
  
 
 
