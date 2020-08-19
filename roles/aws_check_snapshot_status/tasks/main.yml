@@ -18,7 +18,7 @@
 
 - name: Get Values from the command output
   set_fact:
-    snapshot_details: "{{ ensured_snapshot_details.stdout_lines | map(['SnapshotID','OwnerId','StartTime']) | list }}"
+    snapshot_details: "{{ ensured_snapshot_details.stdout_lines | list }}"
 
 - debug: msg="{{ snpshot_details }}"
 
