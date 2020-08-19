@@ -26,7 +26,9 @@
   with_items: "{{ ensured_snapshot_details.stdout_lines | join(', ') }}"
   register: result
 
-- debug:  var= "{{ result['results'][0]['dest'] }}"
+- debug:  
+    msg: "{{ result }}" 
+#   msg: "{{ result['results'][0]['dest'] }}"
  
 
 
