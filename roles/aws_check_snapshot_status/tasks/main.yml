@@ -20,7 +20,7 @@
   set_fact:
     snapshot_details: "{{ ensured_snapshot_details.stdout_lines | list }}"
 
-- debug: msg="{{ snpshot_details }}"
+- debug: msg="{{ snapshot_details }}"
 
 #- debug:
  #   msg: "{{ item[0] }}"
