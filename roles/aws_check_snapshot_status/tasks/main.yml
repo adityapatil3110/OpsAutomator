@@ -23,7 +23,7 @@
     content: "{{ item }}"
     #force: no
  # command: echo "{{ item }}" >> /home/ansible/UntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.csv
-  with_items: "{{ ensured_snapshot_details.stdout_lines | join(', ') }}"
+  with_items: "{{ ensured_snapshot_details.stdout_lines | join(', ') | list }}"
   register: result
 
 - debug:
@@ -59,7 +59,7 @@
 # SENDING THE EMAIL
 ######################################################################################################################################################################################################################################################################################
 
-- name: Send Email for the report based on the conditions check for ses task
+#- name: Send Email for the report based on the conditions check for ses task
   #when: sender and reciever
-  script: files/ses1.py {{ sender_identity }} {{ reciever_identity }} {{ region }} "{{ item }}"
-  with_items: "{{ result['results'][0]['dest'] }}"
+ # script: files/ses1.py {{ sender_identity }} {{ reciever_identity }} {{ region }} "{{ item }}"
+  #with_items: "{{ result['results'][0]['dest'] }}"
