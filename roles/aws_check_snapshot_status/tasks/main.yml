@@ -20,7 +20,7 @@
   set_fact:
     snapshot_details: "{{ ensured_snapshot_details.stdout_lines | list }}"
 
-- debug: var="{{ snapshot_details[][0]['SnapshotId','OwnerId','StartTime']}}"
+- debug: var="{{ snapshot_details[''][0]['SnapshotId','OwnerId','StartTime']}}"
 
 
 #- name: Create a file to store the Untagged Snapshot Report
