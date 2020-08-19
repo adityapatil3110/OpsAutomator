@@ -27,8 +27,8 @@
   register: result
 
 - debug:  
-    msg: "{{ result }}" 
-#   msg: "{{ result['results'][0]['dest'] }}"
+    #msg: "{{ result }}" 
+    msg: "{{ result['results'][0]['dest'] }}"
  
 
 
