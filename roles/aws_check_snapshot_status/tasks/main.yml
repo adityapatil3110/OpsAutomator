@@ -12,13 +12,13 @@
 - name: Ensure required tags are present on snapshots
   environment:
     PATH: "/usr/local/bin:/usr/local/sbin"
-  command: aws ec2 describe-snapshots --region "{{ region }}" --owner-ids self --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].{"'SnapshotId:'"SnapshotId, "'OwnerId:'"OwnerId, "'StartTime:'"StartTime}" --output text
+  command: aws ec2 describe-snapshots --region "{{ region }}" --owner-ids self --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].{"'SnapshotId:'"SnapshotId, "'OwnerId:'"OwnerId, "'StartTime:'"StartTime}" --output json
   register: ensured_snapshot_details
 - debug: msg="{{ensured_snapshot_details.stdout_lines}}"
 
 - debug:
     msg: "{{ item }}"
-  with_items: "{{ ensured_snapshot_details.stdout_lines | join(', ') | list }}"
+  with_items: "{{ ensured_snapshot_details.stdout_lines | join(', ') }}"
 
 #- name: Create a file to store the Untagged Snapshot Report
   #local_action: copy content={{ ensured_snapshot_details.stdout_lines}} dest=template/UntaggedSnapshotReport"{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}".json
