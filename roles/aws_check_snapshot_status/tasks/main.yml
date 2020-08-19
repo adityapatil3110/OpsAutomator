@@ -27,8 +27,8 @@
   register: result
 
 - debug:
-    msg: "{{ result.stdout_lines }}"  
-    #msg: "The Report is generated at: {{ result['results'][0]['dest'] }}"
+    #msg: "{{ result.stdout_lines }}"  
+    msg: "{{ result['results'][0]['dest'] }}"
  
 
 
