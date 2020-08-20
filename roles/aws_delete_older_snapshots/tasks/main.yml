@@ -18,5 +18,5 @@
   script: files/delete_snapshot.py
   register: created_file
 - debug: 
-    msg: "{{ item.2 }}"
+    msg: "{{ item[2] }}"
   loop: "{{ created_file.stdout_lines }}"
