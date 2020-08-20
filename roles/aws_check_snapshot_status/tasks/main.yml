@@ -37,6 +37,5 @@
 ######################################################################################################################################################################################################################################################################################
 
 - name: Send Email for the report based on the conditions check for ses task
-  when: sender and reciever
   script: files/ses1.py {{ sender_identity }} {{ reciever_identity }} {{ region }} "{{ item }}"
   with_items: "{{ raw_report['results'][0]['dest'] }}"
