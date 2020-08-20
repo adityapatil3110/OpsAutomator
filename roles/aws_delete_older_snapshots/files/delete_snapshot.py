@@ -3,8 +3,15 @@
 ############################################################################################################################################################
 #### Fetching and Deleting the Older Snapshots
 ############################################################################################################################################################
-import boto3
+#!/usr/bin/python3
+
+import os
 import sys
+import boto3
+from botocore.exceptions import ClientError
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
 import pandas as pd
 from datetime import datetime
 
@@ -43,10 +50,7 @@ for snapshot in snapshot_response['Snapshots']:
     #if day_old > age:
         #try:
 
-            #print ('deleting -> ' + snapshot_id + ' as image is ' \
-              #+ str(day_old) + ' days old.')
-
-            # delete the snapshot
+            #print (filename)
 
             #ec2.delete_snapshot(SnapshotId=snapshot_id)
         #except:
@@ -62,3 +66,62 @@ df.to_csv(filename, index=False)
 ############################################################################################################################################################
 # Sending Report of the deleted Snapshots
 ############################################################################################################################################################
+ 
+SENDER = sys.argv[1]
+RECIPIENT = sys.argv[2]
+AWS_REGION = sys.argv[3]
+SUBJECT = "Reporting Untagged Snapshots"
+ATTACHMENT = filename
+BODY_TEXT = "Hello,\r\nThis mail is for the reporting of Non-Compliant Snapshots which which are Older than 30 Days."
+ 
+BODY_HTML = """\
+<html>
+<head></head>
+<body>
+<h4>Hello Admin,</h4>
+<p>Please refer to the attached excel sheet for the Non-Compliant Snapshot Report.</p>
+<h4>Regards,</h4>
+<h5>Kunal</h5>
+</body>
+</html>
+"""
+ 
+CHARSET = "utf-8"
+ 
+client = boto3.client('ses',region_name=AWS_REGION)
+ 
+msg = MIMEMultipart('mixed')
+msg['Subject'] = SUBJECT 
+msg['From'] = SENDER 
+msg['To'] = RECIPIENT
+ 
+msg_body = MIMEMultipart('alternative')
+ 
+textpart = MIMEText(BODY_TEXT.encode(CHARSET), 'plain', CHARSET)
+htmlpart = MIMEText(BODY_HTML.encode(CHARSET), 'html', CHARSET)
+ 
+msg_body.attach(textpart)
+msg_body.attach(htmlpart)
+ 
+att = MIMEApplication(open(ATTACHMENT, 'rb').read())
+ 
+att.add_header('Content-Disposition','attachment',filename=os.path.basename(ATTACHMENT))
+ 
+msg.attach(msg_body)
+ 
+msg.attach(att)
+try:
+    response = client.send_raw_email(
+        Source=SENDER,
+        Destinations=[
+            RECIPIENT
+        ],
+        RawMessage={
+            'Data':msg.as_string(),
+        },
+    )
+except ClientError as e:
+    print(e.response['Error']['Message'])
+else:
+    print("Email sent! Message ID:"),
+    print(response['MessageId'])
