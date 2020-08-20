@@ -54,6 +54,7 @@ for snapshot in snapshot_response['Snapshots']:
 now = datetime.now()
 date_time = now.strftime("%Y-%m-%d, %H:%M:%S")
 filename = '/home/ansible/DeletedSnapshotReport'+ date_time +'.csv'
+print (filename)
 dict = {'OwnerId': owner_id, 'SnapshotIDs':snap_list, 'StartTime':start_time, 'Age':day_old}
 df = pd.DataFrame(dict)
 df.to_csv(filename, index=False)
