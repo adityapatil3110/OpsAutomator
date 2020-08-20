@@ -1,11 +1,4 @@
 ---
-#- name: Describe the snapshots and get the snapshot start time
-  #command: aws ec2 describe-snapshots --region "{{ region }}" --query Snapshots[?(StartTime>="'$(date --date="'-1 month'" "'+%Y-%m-%d'")'")].[SnapshotId]
-  #--filters Name=tag:snapshot,Values=yes --output text
-  #register: command_output
-
-#- debug: 
- #   msg: "{{command_output.stdout_lines}}"
 ######################################################################################################################################################################################################################################################################################
 # FINDING UNTAGGED SNAPSHOTS , "'OwnerId:'"OwnerId, "'StartTime:'"StartTime
 ###################################################################################################################################################################################################################################################################################### 
