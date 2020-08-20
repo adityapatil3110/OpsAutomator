@@ -26,12 +26,12 @@ for snapshot in snapshot_response['Snapshots']:
     day_old = days_old(create_date)
     if day_old > age:
         print ('deleting -> ' + snapshot_id + ' as image is ' \
-            + str(day_old) + ' old.')
+            + str(day_old) + ' days old.')
     #if day_old > age:
         #try:
 
-            #print 'deleting -> ' + snapshot_id + ' as image is ' \
-             #   + str(day_old) + ' old.'
+            #print ('deleting -> ' + snapshot_id + ' as image is ' \
+              #+ str(day_old) + ' days old.')
 
             # delete the snapshot
 
