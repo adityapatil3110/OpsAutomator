@@ -10,4 +10,4 @@ df = pd.read_csv(raw_file)
 
 df = df.transpose()
 
-df = df.to_csv(raw_file, index=False, header=False)
+df = df.to_csv(raw_file, index=False,)
