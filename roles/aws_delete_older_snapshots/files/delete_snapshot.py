@@ -118,7 +118,7 @@ for snapshot in snapshot_response['Snapshots']:
         try:
             ec2.delete_snapshot(SnapshotId=snapshot_id, DRYRun=True)
         except:
-            print "can't delete " + snapshot_id
+            print ("can't delete " + snapshot_id)
 
 
 ############################################################################################################################################################
