@@ -5,22 +5,22 @@
 - name: List out Untagged snapshots in a subscription
   command: az snapshot  list --query "[?not_null(tags.Expiry != '')].[name, resourceGroup, timeCreated, sku.tier, id]" -o json
   register: ensured_snapshot_details
-- debug: msg="{{ensured_snapshot_details}}"
+- debug: msg="{{ensured_snapshot_details.stdout_lines}}"
 
 - debug:
     msg: "{{ item }}"
-  with_items: "{{ ensured_snapshot_details | join(', ') }}"
+  with_items: "{{ ensured_snapshot_details.stdout_lines }}"
 
 ######################################################################################################################################################################################################################################################################################
 # Storing Details to CSV File 
 ###################################################################################################################################################################################################################################################################################### 
 
-- name: Create a file to store the Untagged Snapshot Report
-  copy:
-    dest: "/home/ansible/AZUREUntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.csv"
-    content: "{{ item }}"
-    owner: ansible
-    group: ansible
-    mode: '0644'
-  with_items: "{{ ensured_snapshot_details | join(', ') }}"
-  register: raw_report
+#- name: Create a file to store the Untagged Snapshot Report
+ # copy:
+  #  dest: "/home/ansible/AZUREUntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.csv"
+   # content: "{{ item }}"
+    #owner: ansible
+    #group: ansible
+    #mode: '0644'
+  #ith_items: "{{ ensured_snapshot_details | join(', ') }}"
+  #register: raw_report
