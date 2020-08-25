@@ -15,12 +15,12 @@
 # Storing Details to CSV File 
 ###################################################################################################################################################################################################################################################################################### 
 
-#- name: Create a file to store the Untagged Snapshot Report
- # copy:
-  #  dest: "/home/ansible/AZUREUntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.csv"
-   # content: "{{ item }}"
-    #owner: ansible
-    #group: ansible
-    #mode: '0644'
-  #with_items: "{{ ensured_snapshot_details.stdout_lines | join(', ') }}"
-  #register: raw_report
+- name: Create a file to store the Untagged Snapshot Report
+  copy:
+    dest: "/home/ansible/AZUREUntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.csv"
+    content: "{{ item }}"
+    owner: ansible
+    group: ansible
+    mode: '0644'
+  with_items: "{{ ensured_snapshot_details.stdout_lines | join(', ') }}"
+  register: raw_report
