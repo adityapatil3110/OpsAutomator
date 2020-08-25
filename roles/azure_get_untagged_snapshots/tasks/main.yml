@@ -7,9 +7,9 @@
   register: ensured_snapshot_details
 - debug: msg="{{ensured_snapshot_details[''][0][*]}}"
 
-- debug:
-    msg: "{{ item }}"
-  with_items: "{{ ensured_snapshot_details.stdout_lines }}"
+#- debug:
+ #   msg: "{{ item }}"
+  #with_items: "{{ ensured_snapshot_details.stdout_lines }}"
 
 ######################################################################################################################################################################################################################################################################################
 # Storing Details to CSV File 
