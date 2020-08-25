@@ -5,7 +5,7 @@
 - name: List out Untagged snapshots in a subscription
   command: az snapshot  list --query "[?not_null(tags.Expiry != '')].[name, resourceGroup, timeCreated, sku.tier, id]" -o json
   register: ensured_snapshot_details
-#- debug: msg="{{ensured_snapshot_details.stdout_lines}}"
+- debug: msg="{{ensured_snapshot_details.stdout_lines}}"
 
 - debug:
     msg: "{{ item }}"
