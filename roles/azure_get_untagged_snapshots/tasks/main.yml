@@ -15,15 +15,15 @@
 # Storing Details to json File 
 ###################################################################################################################################################################################################################################################################################### 
 
-#- name: Create a file to store the Untagged Snapshot Report
- # copy:
-  #  dest: "/home/ansible/AZUREUntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.json"
-   # content: "{{ item }}"
-    #owner: ansible
-    #group: ansible
-    #mode: '0644'
-  #register: raw_report
-  #with_items: "{{ ensured_snapshot_details.stdout_lines | join(',') | list }}"
+- name: Create a file to store the Untagged Snapshot Report
+  copy:
+    dest: "/home/ansible/AZUREUntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.csv"
+    content: "{{ item }}"
+    owner: ansible
+    group: ansible
+    mode: '0644'
+  register: raw_report
+  with_items: "{{ ensured_snapshot_details.stdout_lines }}"
 #- debug:
  #   msg: "{{ raw_report['dest'] }}"
     #['results'][0]['dest']
