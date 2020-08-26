@@ -22,6 +22,7 @@ if sys.argv[1] is not None and sys.argv[2] is not None:
     outputFile = open(actual_file, 'w') #load csv file
     
     data = json.load(inputFile) #load json content
+    print (data)
     inputFile.close() #close the input file
     
     output = csv.writer(outputFile) #create a csv.write
