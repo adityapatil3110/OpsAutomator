@@ -25,12 +25,12 @@
   register: raw_report
   with_items: "{{ ensured_snapshot_details.stdout_lines | join('\n') }}"
 - debug:
-    msg: "{{ raw_report }}"
+    msg: "{{ raw_report['results'][0]['dest'] }}"
     #['results'][0]['dest']
 
 ######################################################################################################################################################################################################################################################################################
 # Adding Column Name to the Report
 ######################################################################################################################################################################################################################################################################################
-- name: Transpose the Raw Report to generate Human Redable file
-  script: files/Push_Headers.py "{{ raw_report['dest'] }}"
+#- name: Add the headers as column names
+  #script: files/Push_Headers.py "{{ raw_report['dest'] }}"
 
