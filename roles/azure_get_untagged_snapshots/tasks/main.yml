@@ -7,42 +7,42 @@
   register: ensured_snapshot_details
 - debug: msg="{{ ensured_snapshot_details.stdout_lines }}"
 
-#- debug:
-    #msg: "{{ item }}"
-  #with_items: "{{ ensured_snapshot_details.stdout_lines }}"
+- debug:
+    msg: "{{ item }}"
+  with_items: "{{ ensured_snapshot_details.stdout_lines | from_json }}"
 
 ######################################################################################################################################################################################################################################################################################
 # Storing Details to json File 
 ###################################################################################################################################################################################################################################################################################### 
 
-- name: Create a file to store the Untagged Snapshot Report
-  copy:
-    dest: "/home/ansible/AZUREUntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.json"
-    content: "{{ item }}"
-    owner: ansible
-    group: ansible
-    mode: '0644'
-  register: raw_report
-  with_items: "{{ ensured_snapshot_details.stdout_lines | join(',') | list }}"
-- debug:
-    msg: "{{ raw_report['dest'] }}"
+#- name: Create a file to store the Untagged Snapshot Report
+ # copy:
+  #  dest: "/home/ansible/AZUREUntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.json"
+   # content: "{{ item }}"
+    #owner: ansible
+    #group: ansible
+    #mode: '0644'
+  #register: raw_report
+  #with_items: "{{ ensured_snapshot_details.stdout_lines | join(',') | list }}"
+#- debug:
+ #   msg: "{{ raw_report['dest'] }}"
     #['results'][0]['dest']
 
 ######################################################################################################################################################################################################################################################################################
 # Creating Empty CSV File 
 ###################################################################################################################################################################################################################################################################################### 
 
-- name: Create a file to store the Untagged Snapshot Report
-  copy:
-    dest: "/home/ansible/AZUREUntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.csv"
-    content: ""
-    owner: ansible
-    group: ansible
-    mode: '0644'
-  register: csv_file
+#- name: Create a file to store the Untagged Snapshot Report
+  #copy:
+    #dest: "/home/ansible/AZUREUntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.csv"
+    #content: ""
+   # owner: ansible
+  #  group: ansible
+ #   mode: '0644'
+#  register: csv_file
 
-- debug:
-    msg: "{{ csv_file['dest'] }}"
+#- debug:
+ #   msg: "{{ csv_file['dest'] }}"
     #['results'][0]['dest']
 
 
@@ -51,5 +51,5 @@
 ######################################################################################################################################################################################################################################################################################
 # Converting json to csv
 ######################################################################################################################################################################################################################################################################################
-- name: Transpose the Raw Report to generate Human Redable file
-  script: files/Report_json_to_csv.py "{{ raw_report['dest'] }}"  "{{ csv_file['dest'] }}"
+#- name: Transpose the Raw Report to generate Human Redable file
+ # script: files/Report_json_to_csv.py "{{ raw_report['dest'] }}"  "{{ csv_file['dest'] }}"
