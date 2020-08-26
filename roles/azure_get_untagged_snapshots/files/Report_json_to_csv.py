@@ -11,7 +11,7 @@ import os
 header = ['Name', 'ResourceGroup', 'StartTime', 'SKU Tier', 'SnapshotID']
 
 #if you are not using utf-8 files, remove the next line
-sys.setdefaultencoding("UTF-8") #set the encode to utf8
+#sys.setdefaultencoding("UTF-8") #set the encode to utf8
 #check if you pass the input file and output file
 
 if sys.argv[1] is not None and sys.argv[2] is not None:
