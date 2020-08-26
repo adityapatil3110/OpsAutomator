@@ -19,10 +19,10 @@ BODY_HTML = """\
 <html>
 <head></head>
 <body>
-<h4>Hello Admin,</h4>
+<h4>Hello,</h4>
 <p>Please refer to the attached excel sheet for the Non-Compliant Snapshot Report.</p>
 <h4>Regards,</h4>
-<h5>Kunal</h5>
+<h5>Aditya Patil</h5>
 </body>
 </html>
 """
