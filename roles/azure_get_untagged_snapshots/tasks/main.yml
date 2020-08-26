@@ -8,8 +8,8 @@
 - debug: msg="{{ ensured_snapshot_details.stdout_lines }}"
 
 - debug:
-    msg: "{{ item }}"
-  with_items: "{{ ensured_snapshot_details.stdout_lines | from_json }}"
+    msg: "{{ item | type_debug }}"
+  with_items: "{{ ensured_snapshot_details.stdout_lines }}"
 
 ######################################################################################################################################################################################################################################################################################
 # Storing Details to json File 
