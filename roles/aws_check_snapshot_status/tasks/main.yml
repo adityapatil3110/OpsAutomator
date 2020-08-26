@@ -7,6 +7,7 @@
     PATH: "/usr/local/bin:/usr/local/sbin"
   command: aws ec2 describe-regions --query "Regions[].{"'RegionName:'"RegionName}" --output text
   register: region_names
+
 - debug: msg="{{region_names.stdout_lines}}"
 
 - debug:
@@ -16,16 +17,18 @@
 ######################################################################################################################################################################################################################################################################################
 # FINDING UNTAGGED SNAPSHOTS , "'OwnerId:'"OwnerId, "'StartTime:'"StartTime
 ###################################################################################################################################################################################################################################################################################### 
-#- name: Ensure required tags are present on snapshots
-  #environment:
-   # PATH: "/usr/local/bin:/usr/local/sbin"
-  #command: aws ec2 describe-snapshots --region "{{ region }}" --owner-ids self --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].{"'SnapshotId:'"SnapshotId, "'OwnerId:'"OwnerId, "'RegionName:'"RegionName, "'StartTime:'"StartTime}" --output text | sed -e 's/\t/,/g'
- # register: ensured_snapshot_details
-#- debug: msg="{{ensured_snapshot_details.stdout_lines}}"
+- name: Ensure required tags are present on snapshots
+  environment:
+    PATH: "/usr/local/bin:/usr/local/sbin"
+  command: aws ec2 describe-snapshots --region "{{ item }}" --owner-ids self --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].{"'SnapshotId:'"SnapshotId, "'OwnerId:'"OwnerId, "'StartTime:'"StartTime, "'{{ item }}'"}" --output text | sed -e 's/\t/,/g'
+  register: ensured_snapshot_details
+  with_items: "{{ region_names.stdout_lines }}"
 
-#- debug:
-   # msg: "{{ item }}"
-  #with_items: "{{ ensured_snapshot_details.stdout_lines }}"
+- debug: msg="{{ ensured_snapshot_details.stdout_lines}}"
+
+- debug:
+    msg: "{{ item }}"
+  with_items: "{{ ensured_snapshot_details.stdout_lines }}"
 
 #- name: Create a file to store the Untagged Snapshot Report
  # copy:
