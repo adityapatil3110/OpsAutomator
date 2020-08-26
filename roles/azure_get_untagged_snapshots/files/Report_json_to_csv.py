@@ -29,4 +29,5 @@ if sys.argv[1] is not None and sys.argv[2] is not None:
     output.writerow(header)  # header row
     #output.writerow(data[0].keys())  # header row
     for row in data:
+        print (data)
         output.writerow(data) #values row
