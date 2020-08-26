@@ -9,7 +9,7 @@ import os
 header = ['Name', 'ResourceGroup', 'StartTime', 'SKU Tier', 'SnapshotID']
 
 
-if sys.argv[1] is not None and sys.argv[2] is not None:
+if sys.argv[1] is not None: # and sys.argv[2] is not None:
     raw_file = sys.argv[1]
         
     inputFile = open(raw_file, 'w') #Load CSV File
