@@ -23,7 +23,7 @@
     group: ansible
     mode: '0644'
   register: raw_report
-  with_items: "{{ ensured_snapshot_details.stdout_lines | join(', ') }}"
+  with_items: "{{ ensured_snapshot_details.stdout_lines | join(',') | list }}"
 - debug:
     msg: "{{ raw_report['dest'] }}"
     #['results'][0]['dest']
