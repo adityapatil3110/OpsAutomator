@@ -20,7 +20,7 @@
 - name: Ensure required tags are present on snapshots
   environment:
     PATH: "/usr/local/bin:/usr/local/sbin"
-  shell: aws ec2 describe-snapshots --region "{{ item }}" --owner-ids self --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].{"'SnapshotId:'"SnapshotId, "'OwnerId:'"OwnerId, "'StartTime:'"StartTime}" --output text | "sed -e 's/\\t/,/g'"
+  shell: aws ec2 describe-snapshots --region "{{ item }}" --owner-ids self --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].{"'SnapshotId:'"SnapshotId, "'OwnerId:'"OwnerId, "'StartTime:'"StartTime}" --output text | sed -e 's/\\t/,/g'
   register: ensured_snapshot_details
   with_items: "{{ region_names.stdout_lines }}"
 
