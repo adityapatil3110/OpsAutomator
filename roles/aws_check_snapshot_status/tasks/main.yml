@@ -10,9 +10,9 @@
 
 - debug: msg="{{region_names.stdout_lines}}"
 
-- debug:
-    msg: "{{ item }}"
-  with_items: "{{ region_names.stdout_lines }}"
+#- debug:
+ #   msg: "{{ item }}"
+  #with_items: "{{ region_names.stdout_lines }}"
 
 ######################################################################################################################################################################################################################################################################################
 # FINDING UNTAGGED SNAPSHOTS , "'OwnerId:'"OwnerId, "'StartTime:'"StartTime
