@@ -25,4 +25,5 @@
   register: raw_report
 
 - debug:
-    msg: "{{ raw_report['results'][0]['dest'] }}"
+    msg: "{{ raw_report }}"
+    #['results'][0]['dest']
