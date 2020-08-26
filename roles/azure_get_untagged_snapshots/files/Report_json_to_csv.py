@@ -28,4 +28,4 @@ if sys.argv[1] is not None and sys.argv[2] is not None:
     output.writerow(header)  # header row
     #output.writerow(data[0].keys())  # header row
     for row in data:
-        output.writerow(row.values()) #values row
+        output.writerow(data) #values row
