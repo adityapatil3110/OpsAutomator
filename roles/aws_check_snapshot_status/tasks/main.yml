@@ -24,7 +24,8 @@
   register: ensured_snapshot_details
   #with_items: "{{ region_names.stdout_lines }}"
 
-- debug: msg="{{ ensured_snapshot_details.stdout_lines}} #{{ region_names.stdout_lines }}"
+- debug: msg="{{ ensured_snapshot_details.stdout_lines}} 
+#{{ region_names.stdout_lines }}"
 
 #- debug:
    # msg: "{{ item }}"
