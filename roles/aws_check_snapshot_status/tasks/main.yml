@@ -46,11 +46,11 @@
  #   msg: "{{ raw_report['results'][0]['dest'] }}"
 
 ######################################################################################################################################################################################################################################################################################
-# Transposing the RawReport Using Pandas
+# Adding headers to the Generated Report
 ######################################################################################################################################################################################################################################################################################
-#- name: Transpose the Raw Report to generate Human Redable file
-  #script: files/transpose.py "{{ item }}"
-  #with_items: "{{ raw_report['results'][0]['dest'] }}"
+- name: Add required headers as column names to the generated report
+  script: files/Push_Headers.py "{{ item }}"
+  with_items: "{{ raw_report['results'][0]['dest'] }}"
 
  
 
@@ -58,6 +58,6 @@
 # SENDING THE EMAIL
 ######################################################################################################################################################################################################################################################################################
 
-#- name: Send Email for the report based on the conditions check for ses task
- # script: files/ses1.py {{ sender_identity }} {{ reciever_identity }} {{ region }} "{{ item }}"
-  #with_items: "{{ raw_report['results'][0]['dest'] }}"
+- name: Send Email for the report based on the conditions check for ses task
+  script: files/ses1.py {{ sender_identity }} {{ reciever_identity }} {{ region }} "{{ item }}"
+  with_items: "{{ raw_report['results'][0]['dest'] }}"
