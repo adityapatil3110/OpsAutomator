@@ -2,13 +2,13 @@
 ######################################################################################################################################################################################################################################################################################
 # Listing All Regions
 ###################################################################################################################################################################################################################################################################################### 
-- name: Ensure required tags are present on snapshots
-  environment:
-    PATH: "/usr/local/bin:/usr/local/sbin"
-  command: aws ec2 describe-regions --query "Regions[].{"'RegionName:'"RegionName}" --output text
-  register: region_names
+#- name: Ensure required tags are present on snapshots
+ # environment:
+  #  PATH: "/usr/local/bin:/usr/local/sbin"
+  #command: aws ec2 describe-regions --query "Regions[].{"'RegionName:'"RegionName}" --output text
+  #register: region_names
 
-- debug: msg="{{region_names.stdout_lines}}"
+#- debug: msg="{{region_names.stdout_lines}}"
 
 #- debug:
  #   msg: "{{ item }}"
@@ -20,11 +20,11 @@
 - name: Ensure required tags are present on snapshots
   environment:
     PATH: "/usr/local/bin:/usr/local/sbin"
-  shell: aws ec2 describe-snapshots --region "{{ item }}" --owner-ids self --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].{"'SnapshotId:'"SnapshotId, "'OwnerId:'"OwnerId, "'StartTime:'"StartTime}" --output text | "sed -e 's/\\t/,/g'"
+  shell: aws ec2 describe-snapshots --region "{{ region }}" --owner-ids self --query "Snapshots[?!not_null(Tags[?Key == 'Expiry'].Value) && !not_null(Tags[?Key == 'Email'].Value)].{"'SnapshotId:'"SnapshotId, "'OwnerId:'"OwnerId, "'StartTime:'"StartTime}" --output text | "sed -e 's/\\t/,/g'"
   register: ensured_snapshot_details
   with_items: "{{ region_names.stdout_lines }}"
 
-- debug: msg="{{ ensured_snapshot_details.stdout_lines}} {{ region_names.stdout_lines }}"
+- debug: msg="{{ ensured_snapshot_details.stdout_lines}} #{{ region_names.stdout_lines }}"
 
 #- debug:
    # msg: "{{ item }}"
