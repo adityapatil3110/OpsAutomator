@@ -14,7 +14,7 @@ from email.mime.application import MIMEApplication
 import pandas as pd
 from datetime import datetime
 
-age_limit = ''
+#age_limit = ''
 limit = int(age_limit)
 snap_list = []
 ownerid_list = []
