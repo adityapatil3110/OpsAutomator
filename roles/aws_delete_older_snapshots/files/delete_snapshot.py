@@ -15,6 +15,7 @@ import pandas as pd
 from datetime import datetime
 
 age_limit = None
+limit = int(age_limit)
 snap_list = []
 ownerid_list = []
 start_time_list = []
@@ -51,7 +52,7 @@ for snapshot in snapshot_response['Snapshots']:
     
     
     
-    if day_old > str(age_limit):
+    if day_old > limit:
         snap_list.append(snapshot_id)
         start_time = str(create_date)
         ownerid_list.append(owner_id)
