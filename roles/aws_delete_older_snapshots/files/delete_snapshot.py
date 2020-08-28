@@ -31,7 +31,7 @@ def days_old(date):
 ec2_client = boto3.client('ec2')
 
 snapshot_response = ec2_client.describe_snapshots(OwnerIds=['self'])
-print (snapshot_response)
+#print (snapshot_response)
 
 for snapshot in snapshot_response['Snapshots']:
     create_date = snapshot['StartTime']
@@ -39,9 +39,10 @@ for snapshot in snapshot_response['Snapshots']:
     owner_id = snapshot['OwnerId']
     day_old = days_old(create_date)
     
-    if snapshot['Key'] == 'Expiry':
-        age_limit = snapshot.get('Value')
-        print (age_limit)
+    for tag in snapshot_response.tags:
+        if tag['Key'] == 'Expiry':
+            age_limit = tag.get('Value')
+            print (age_limit)
     
     
     
