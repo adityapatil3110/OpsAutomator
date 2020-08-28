@@ -51,7 +51,7 @@ for snapshot in snapshot_response['Snapshots']:
     
     
     
-    if day_old > age_limit:
+    if day_old > str(age_limit):
         snap_list.append(snapshot_id)
         start_time = str(create_date)
         ownerid_list.append(owner_id)
