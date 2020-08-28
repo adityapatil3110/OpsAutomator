@@ -20,6 +20,7 @@ snap_list = []
 ownerid_list = []
 start_time_list = []
 day_old_list = []
+tag_dict = {}
 
 ######## Function for days_old
 
@@ -43,6 +44,7 @@ for snapshot in snapshot_response['Snapshots']:
     snapshot_id = snapshot['SnapshotId']
     owner_id = snapshot['OwnerId']
     day_old = days_old(create_date)
+    tag_dict = snapshot['Tags']
     
     # Get the expiry tag value 
     if 'Tags' in snapshot:
@@ -65,7 +67,7 @@ for snapshot in snapshot_response['Snapshots']:
         date_time = now.strftime("%Y-%m-%d, %H:%M:%S")
         filename = '/home/ansible/DeletedSnapshotReport'+ date_time +'.csv'
         print (filename)
-        dict = {'OwnerId': owner_id, 'SnapshotIDs':snap_list, 'StartTime':start_time, 'Age':day_old}
+        dict = {'OwnerId':owner_id, 'SnapshotIDs':snap_list, 'StartTime':start_time, 'Age':day_old, 'Tags':tag_dict}
         df = pd.DataFrame(dict)
         df.to_csv(filename, index=False)
         
