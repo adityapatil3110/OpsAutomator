@@ -37,8 +37,10 @@ for snapshot in snapshot_response['Snapshots']:
     create_date = snapshot['StartTime']
     snapshot_id = snapshot['SnapshotId']
     owner_id = snapshot['OwnerId']
+    snap_tags = snapshot['Tags']
     day_old = days_old(create_date)
     
+    print(snap_tags)
     #if day_old > age:
         #print ('deleting -> ' + snapshot_id + ' as image is ' \
             #+ str(day_old) + ' days old.')
