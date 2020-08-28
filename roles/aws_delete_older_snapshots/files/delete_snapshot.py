@@ -44,21 +44,23 @@ for snapshot in snapshot_response['Snapshots']:
     owner_id = snapshot['OwnerId']
     day_old = days_old(create_date)
     
+    # Get the expiry tag value 
     if 'Tags' in snapshot:
         for tags in snapshot['Tags']:
             if tags['Key'] == 'Expiry':
                 age_limit = tags['Value']
-                print (age_limit)
+                #print (age_limit)
     
     
-    
-    if day_old > limit:
+    # Compare current age of snapshot with age_limit mentioned in snapshot's expiry tag
+    if day_old >= limit:
         snap_list.append(snapshot_id)
         start_time = str(create_date)
         ownerid_list.append(owner_id)
         start_time_list.append(start_time)
         day_old_list.append(day_old)
         
+        # Generate the Report name for deleted snapshots and push the column names and details of the deleted snapshots
         now = datetime.now()
         date_time = now.strftime("%Y-%m-%d, %H:%M:%S")
         filename = '/home/ansible/DeletedSnapshotReport'+ date_time +'.csv'
@@ -67,6 +69,7 @@ for snapshot in snapshot_response['Snapshots']:
         df = pd.DataFrame(dict)
         df.to_csv(filename, index=False)
         
+        # Get arguments for the email details and send the email
         SENDER = sys.argv[1]
         RECIPIENT = sys.argv[2]
         AWS_REGION = sys.argv[3]
@@ -126,11 +129,7 @@ for snapshot in snapshot_response['Snapshots']:
             print("Email sent! Message ID:"),
             print(response['MessageId'])
         try:
+            # Delete the snapshots
             ec2.delete_snapshot(SnapshotId=snapshot_id, DRYRun=True)
         except:
             print ("can't delete " + snapshot_id)
-
-
-############################################################################################################################################################
-# Sending Report of the deleted Snapshots
-############################################################################################################################################################
