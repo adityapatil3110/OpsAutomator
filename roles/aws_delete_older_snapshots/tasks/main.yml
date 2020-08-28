@@ -17,6 +17,6 @@
 - name: Execute the Snapshot Deletion Program
   script: files/delete_snapshot.py {{ sender_identity }} {{ reciever_identity }} {{ region }}
   register: created_file
-- debug: 
-    msg: "{{ item[2] }}"
-  loop: "{{ created_file.stdout_lines }}"
+- debug: msg="{{ created_file }}"
+    #msg: "{{ item[2] }}"
+  #loop: "{{ created_file.stdout_lines }}"
