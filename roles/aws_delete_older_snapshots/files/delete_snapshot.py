@@ -31,13 +31,13 @@ def days_old(date):
 ec2_client = boto3.client('ec2')
 
 snapshot_response = ec2_client.describe_snapshots(OwnerIds=['self'])
-
+print (snapshot_response)
 
 for snapshot in snapshot_response['Snapshots']:
     create_date = snapshot['StartTime']
     snapshot_id = snapshot['SnapshotId']
     owner_id = snapshot['OwnerId']
-    snap_tags = snapshot['Tags']
+    #snap_tags = snapshot['Tags']
     day_old = days_old(create_date)
     
     print(snap_tags)
