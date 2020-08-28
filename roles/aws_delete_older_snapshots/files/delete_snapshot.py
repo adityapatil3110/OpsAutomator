@@ -46,8 +46,8 @@ for snapshot in snapshot_response['Snapshots']:
     if 'Tags' in snapshot:
         for tags in snapshot['Tags']:
             if tags['Key'] == 'Expiry':
-            age_limit = tags['Value']
-            print (age_limit)
+                age_limit = tags['Value']
+                print (age_limit)
     
     
     
