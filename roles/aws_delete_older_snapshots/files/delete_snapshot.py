@@ -135,3 +135,7 @@ for snapshot in snapshot_response['Snapshots']:
             ec2.delete_snapshot(SnapshotId=snapshot_id, DRYRun=True)
         except:
             print ("can't delete " + snapshot_id)
+            
+    else: 
+        print("There are no snapshots older than defined Expiry")
+        Print("Check for Non-Compliant Snapshots")
