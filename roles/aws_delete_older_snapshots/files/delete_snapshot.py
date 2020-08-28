@@ -43,8 +43,8 @@ for snapshot in snapshot_response['Snapshots']:
     owner_id = snapshot['OwnerId']
     day_old = days_old(create_date)
     
-    for tag in snapshot_response['Snapshots']:
-        if tag['Key'] == 'Expiry':
+    for tags in snapshot_response['Snapshots']:
+        if tags[tag['Key']] == 'Expiry':
             age_limit = tag.get('Value')
             print (age_limit)
     
