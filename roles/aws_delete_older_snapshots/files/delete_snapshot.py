@@ -55,7 +55,7 @@ for snapshot in snapshot_response['Snapshots']:
     
     
     # Compare current age of snapshot with age_limit mentioned in snapshot's expiry tag
-    if day_old >= limit:
+    if day_old < limit:
         snap_list.append(snapshot_id)
         start_time = str(create_date)
         ownerid_list.append(owner_id)
