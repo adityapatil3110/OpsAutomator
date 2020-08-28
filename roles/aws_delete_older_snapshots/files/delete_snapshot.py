@@ -14,8 +14,8 @@ from email.mime.application import MIMEApplication
 import pandas as pd
 from datetime import datetime
 
-#age_limit = ''
-limit = int(age_limit)
+age_limit = int()
+limit = age_limit
 snap_list = []
 ownerid_list = []
 start_time_list = []
@@ -45,7 +45,6 @@ for snapshot in snapshot_response['Snapshots']:
     day_old = days_old(create_date)
     
     if 'Tags' in snapshot:
-        age_limit = None
         for tags in snapshot['Tags']:
             if tags['Key'] == 'Expiry':
                 age_limit = tags['Value']
