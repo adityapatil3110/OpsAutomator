@@ -138,4 +138,4 @@ for snapshot in snapshot_response['Snapshots']:
             
     else: 
         print("There are no snapshots older than defined Expiry")
-        Print("Check for Non-Compliant Snapshots")
+        print("Check for Non-Compliant Snapshots")
