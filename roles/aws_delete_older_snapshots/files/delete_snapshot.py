@@ -45,6 +45,7 @@ for snapshot in snapshot_response['Snapshots']:
     day_old = days_old(create_date)
     
     if 'Tags' in snapshot:
+        age_limit = None
         for tags in snapshot['Tags']:
             if tags['Key'] == 'Expiry':
                 age_limit = tags['Value']
