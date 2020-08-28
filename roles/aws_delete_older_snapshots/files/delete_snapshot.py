@@ -30,7 +30,11 @@ def days_old(date):
 
 ec2_client = boto3.client('ec2')
 
-snapshot_response = ec2_client.describe_snapshots(OwnerIds=['self'], Filters=[{'Expiry': 'tag:key','Values': ['']})
+snapshot_response = ec2_client.describe_snapshots(OwnerIds=['self'],
+            Filters=[
+                {'Name': 'tag:Expiry', 'Values': ['*']}
+                  ]
+              )
 #print (snapshot_response)
 
 for snapshot in snapshot_response['Snapshots']:
