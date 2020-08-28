@@ -14,7 +14,7 @@ from email.mime.application import MIMEApplication
 import pandas as pd
 from datetime import datetime
 
-age = 20
+age_limit = None
 snap_list = []
 ownerid_list = []
 start_time_list = []
@@ -37,14 +37,15 @@ for snapshot in snapshot_response['Snapshots']:
     create_date = snapshot['StartTime']
     snapshot_id = snapshot['SnapshotId']
     owner_id = snapshot['OwnerId']
-    #snap_tags = snapshot['Tags']
     day_old = days_old(create_date)
     
-    print(snap_tags)
-    #if day_old > age:
-        #print ('deleting -> ' + snapshot_id + ' as image is ' \
-            #+ str(day_old) + ' days old.')
-    if day_old > age:
+    if snapshot['Key'] == 'Expiry':
+        age_limit = snapshot.get('Value')
+        print (age_limit)
+    
+    
+    
+    if day_old > age_limit:
         snap_list.append(snapshot_id)
         start_time = str(create_date)
         ownerid_list.append(owner_id)
