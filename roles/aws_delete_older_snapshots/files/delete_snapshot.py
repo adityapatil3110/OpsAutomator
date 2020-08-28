@@ -44,7 +44,7 @@ for snapshot in snapshot_response['Snapshots']:
     day_old = days_old(create_date)
     
     for tags in snapshot_response['Snapshots']:
-        if tags[tag['Key']] == 'Expiry':
+        if tags[Name['Key']] == 'Expiry':
             age_limit = tag.get('Value')
             print (age_limit)
     
