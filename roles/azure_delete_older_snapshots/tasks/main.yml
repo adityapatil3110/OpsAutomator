@@ -9,5 +9,5 @@
 - debug: msg="{{ ensured_snapshot_details.stdout_lines }}"
 
 - debug:
-    msg: "{{ item }}"
+    msg: "{{ item[2] }}"
   with_items: "{{ ensured_snapshot_details.stdout_lines | join('\n') }}"
