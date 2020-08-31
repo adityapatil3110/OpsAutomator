@@ -3,7 +3,7 @@
 # FINDING UNTAGGED SNAPSHOTS 
 ###################################################################################################################################################################################################################################################################################### 
 - name: List out Untagged snapshots in a subscription
-  shell: az snapshot  list --query "[?not_null(tags.Expiry != '')].[name, resourceGroup, timeCreated, sku.tier, location, tags{'*'}, id]" -o tsv | sed -e 's/\t/,/g'
+  shell: az snapshot  list --query "[?not_null(tags.Expiry != '')].[name, resourceGroup, timeCreated, sku.tier, location, tags, id]" -o tsv | sed -e 's/\t/,/g'
   register: ensured_snapshot_details
 - debug: msg="{{ ensured_snapshot_details.stdout_lines }}"
 
