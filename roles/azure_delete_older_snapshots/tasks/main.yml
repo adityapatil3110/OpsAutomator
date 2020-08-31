@@ -8,6 +8,6 @@
   register: ensured_snapshot_details
 - debug: msg="{{ ensured_snapshot_details[0]['start'] }}"
 
-- debug:
+#- debug:
    # msg: "{{ item[2] }}"
   #with_items: "{{ ensured_snapshot_details.stdout_lines | join('\n') }}"
