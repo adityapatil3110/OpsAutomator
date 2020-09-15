@@ -7,7 +7,7 @@ from datetime import datetime
 
 start_date = sys.argv[1]
 
-
+print (start_date)
 
 ######## Function for days_old
 
