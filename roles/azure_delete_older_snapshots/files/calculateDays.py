@@ -12,7 +12,7 @@ start_date = sys.argv[1]
 ######## Function for days_old
 
 def days_old(date):
-    date_obj = date.replace(tzinfo=None)
+    date_obj = date.replace()
     diff = datetime.now() - date_obj
     return diff.days
 
