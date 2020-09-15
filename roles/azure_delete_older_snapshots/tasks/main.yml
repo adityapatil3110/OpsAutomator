@@ -21,3 +21,6 @@
 - name: Get the snapshot age in number of days using python
   script: files/calculateDays.py {{ item }} 
   with_items: "{{ ensured_snapshot_details['start'] }}"
+  register: snapshot_age_in_days
+- debug:
+    msg: "{{ snapshot_age_in_days.stdout_lines }}"
