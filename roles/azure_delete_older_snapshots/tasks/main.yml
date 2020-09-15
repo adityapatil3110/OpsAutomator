@@ -7,7 +7,7 @@
   #| sed -e 's/\t/,/g'
   register: ensured_snapshot_details
 - debug: 
-    var= {{ ensured_snapshot_details[''start] }}
+    var= {{ ensured_snapshot_details['start'] }}
     #ensured_snapshot_details['start']
     #- '%Y-%m-%d %H:%M:%S' | to_datetime('%Y-%m-%d %H:%M:%S') }}"
     # - ('%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch))).days }}"
