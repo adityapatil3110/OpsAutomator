@@ -3,8 +3,9 @@
 # FINDING Snapshots with the EXPIRY TAG and displaying the snapshot details
 ###################################################################################################################################################################################################################################################################################### 
 - name: List out snapshots in a subscription with the Expiry tags mentioned
-  shell: az snapshot list --query "[?tags.Expiry != values[]].[name, tags.Expiry, timeCreated]" -o json 
+  shell: az snapshot list --query "[?tags.Expiry != values[]].[*]" -o json 
   #| sed -e 's/\t/,/g'
+  #[name, tags.Expiry, timeCreated]
   register: ensured_snapshot_details
 - debug: 
      msg: "{{ ensured_snapshot_details }}"
