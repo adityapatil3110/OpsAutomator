@@ -7,7 +7,7 @@
   #| sed -e 's/\t/,/g'
   #[name, tags.Expiry, timeCreated]
   register: ensured_snapshot_details
-- debug: 
+- debug:    
      var: ensured_snapshot_details['stdout_lines'][4]
          #ensured_snapshot_details['start']
     #- '%Y-%m-%d %H:%M:%S' | to_datetime('%Y-%m-%d %H:%M:%S') }}"
