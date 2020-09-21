@@ -12,7 +12,7 @@ print (start_date)
 ######## Function for days_old
 
 def days_old(date):
-    date_obj = date
+    date_obj = datetime.datetime(date)
     diff = datetime.now() - date_obj
     return diff.days
 
