@@ -7,7 +7,7 @@ import pandas as pd
 
 snapshot_date_obj = sys.argv[1]
 
-snapshot_date = datetime.strptime(snapshot_date_obj, '%Y-%m-%d%H:%M:%S.%f%z')
+snapshot_date = datetime.strptime(snapshot_date_obj, '%Y-%m-%d%H:%M:%S.%f%:z')
 print (snapshot_date)
 
 ######## Function for days_old
