@@ -18,4 +18,4 @@ def days_old(date):
     return diff.days
 
 
-days = days_old(start_date)
+days = days_old(snapshot_date)
