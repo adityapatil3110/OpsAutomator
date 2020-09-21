@@ -8,8 +8,9 @@
   #[name, tags.Expiry, timeCreated]
   register: ensured_snapshot_details
 - debug:    
-    msg: "{{ ((ensured_snapshot_details['stdout_lines'][4] | strftime(ansible_date_time.epoch)) - ('%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch))).days }}"
-         #ensured_snapshot_details['start']
+    msg: "{{ ((ensured_snapshot_details['stdout_lines'][4] | to_datetime) - ('%Y-%m-%d %H:%M:%S' | to_datetime('%Y-%m-%d'))).days }}"
+    #(("2016-08-14 20:00:12" | to_datetime) - ("2015-12-25" | to_datetime('%Y-%m-%d'))).days  }}     
+    #ensured_snapshot_details['start']
     #- '%Y-%m-%d %H:%M:%S' | to_datetime('%Y-%m-%d %H:%M:%S') }}"
     # - ('%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch))).days }}"
 #- debug:
