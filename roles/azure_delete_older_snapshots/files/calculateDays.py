@@ -5,9 +5,10 @@ import sys
 from datetime import datetime
 import pandas as pd
 
-start_date = sys.argv[1]
+snapshot_date_obj = sys.argv[1]
 
-print (start_date)
+snapshot_date = datetime.strptime(snapshot_date_obj, '%Y-%m-%d %H:%M:%S.%f%z')
+print (snapshot_date)
 
 ######## Function for days_old
 
