@@ -10,7 +10,7 @@ import pandas as pd
 #quotes = '"""'
 json_str_data = "'''\n"+ sys.argv[1] +"'''"
 json_data = json_str_data.replace("\'", "\"")
-snapshot_response = json.loads(json_data)
+snapshot_response = json.loads(json.dumps(json_data))
 #snapshot_response = json.dumps(snapshot_response)
 #snapshot_response = json.loads(snapshot_response)
 print(snapshot_response[0]["name"])
