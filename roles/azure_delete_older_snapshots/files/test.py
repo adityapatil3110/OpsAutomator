@@ -10,5 +10,5 @@ snapshot_response = sys.argv[1]
 #print (snapshot_response)
 
 for snapshot in snapshot_response:
-    snapshot_name = snapshot[0]
+    snapshot_name = snapshot[0]['diskSizeBytes']
     print(snapshot_name)
