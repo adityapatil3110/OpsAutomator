@@ -7,7 +7,8 @@ from datetime import datetime
 import pandas as pd
 
 snapshot_response = sys.argv[1]
+print (snapshot_reponse)
 
-for snapshot in snapshot_response:
-    snapshot_name = snapshot[0]['name']
-    print(snapshot_name)
+#for snapshot in snapshot_response:
+ #   snapshot_name = snapshot['name']
+  #  print(snapshot_name)
