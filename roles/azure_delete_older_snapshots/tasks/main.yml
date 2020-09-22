@@ -22,10 +22,12 @@
 ######################################################################################################################################################################################################################################################################################
 # Get the Number of Days
 ###################################################################################################################################################################################################################################################################################### 
-#- name: Get the snapshot age in number of days using python
- # script: files/calculateDays.py {{ item }} 
+- name: Get the snapshot age in number of days using python
+  #script: files/calculateDays.py {{ item }} 
   #with_items: #"{{ ensured_snapshot_details['stdout_lines'][4] }}"
+  script: files/test.py {{ item }} 
+  with_items: "{{ ensured_snapshot_details.stdout }}"
   #- { }
-  #register: snapshot_age_in_days
-#- debug:
- #   msg: "{{ snapshot_age_in_days['results'][0]['stdout'] }}"
+  register: snapshot_age_in_days
+- debug:
+    msg: "{{ snapshot_age_in_days }}"
