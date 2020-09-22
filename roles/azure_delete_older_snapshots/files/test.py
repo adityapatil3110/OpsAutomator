@@ -10,7 +10,7 @@ import pandas as pd
 snapshot_response = sys.argv[1]
 snapshot_response = json.dumps(snapshot_response)
 snapshot_response = json.loads(snapshot_response)
-print (snapshot_response[0]['name'])
+print (snapshot_response[0]["name"])
 
 #for snapshot in snapshot_response:
   #  snapshot_name = snapshot[0]['diskSizeBytes']
