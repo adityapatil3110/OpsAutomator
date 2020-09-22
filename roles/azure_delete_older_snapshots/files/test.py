@@ -7,7 +7,8 @@ import json
 from datetime import datetime
 import pandas as pd
 
-json_str_data = sys.argv[1]
+#quotes = '"""'
+json_str_data = '"""'+ sys.argv[1] +'"""'
 json_data = json_str_data.replace("\'", "\"")
 snapshot_response = json.loads(json_data)
 #snapshot_response = json.dumps(snapshot_response)
