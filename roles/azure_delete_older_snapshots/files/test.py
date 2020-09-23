@@ -12,7 +12,7 @@ json_str_data = sys.argv[1]
 for json_data in json_str_data:
   #json_data = json_str_data.replace('\r\n', '')
   json_data = json_str_data.replace('\n\t', '"')
-  json_data = json_data.replace(':', ':"')
+  json_data = json_data.replace(':', '":')
   print(json_data)
 #for snapshot in json_data:
   snapshot_response = json.loads(json_data)
