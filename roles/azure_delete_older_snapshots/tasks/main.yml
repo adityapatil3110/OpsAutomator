@@ -8,7 +8,7 @@
   #[name, tags.Expiry, timeCreated]
   register: ensured_snapshot_details
 - debug:    
-    msg: "{{ ensured_snapshot_details.stdout }}" 
+    msg: "{{ ensured_snapshot_details.stdout_lines }}" 
     #['stdout_lines'][4] }}"
     # | to_datetime('%Y-%m-%d %H:%M:%S.%f%z'))- ('%Y-%m-%d %H:%M:%S.%f%z' | to_datetime('%Y-%m-%d %H:%M:%S.%f%z'))).days }}"
     #(("2016-08-14 20:00:12" | to_datetime) - ("2015-12-25" | to_datetime('%Y-%m-%d'))).days  }}     
@@ -26,7 +26,7 @@
   #script: files/calculateDays.py {{ item }} 
   #with_items: #"{{ ensured_snapshot_details['stdout_lines'][4] }}"
   script: files/test.py {{ item }} 
-  with_items: "{{ ensured_snapshot_details.stdout }}"
+  with_items: "{{ ensured_snapshot_details.stdout_lines }}"
   #- { }
   register: snapshot_age_in_days
 - debug:
