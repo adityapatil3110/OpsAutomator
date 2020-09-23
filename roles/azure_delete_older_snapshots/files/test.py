@@ -15,7 +15,7 @@ for json_data in json_str_data:
   json_data = json_data.replace(':', '":')
   print(json_data)
 #for snapshot in json_data:
-  snapshot_response = json.loads(json_data)
+  snapshot_response = json.loads(json_data, strict=False)
 #snapshot_response = json.dumps(snapshot_response)
 #snapshot_response = json.loads(snapshot_response)
   print(snapshot_response[0]["name"])
