@@ -11,6 +11,7 @@ import pandas as pd
 json_str_data = "'''"+sys.argv[1]+"'''"
 json_data = json_str_data.replace("\'", "\"")
 #json_data = json.dumps(json_data)
+print(json_data)
 
 for snapshot in json_data:
   snapshot_response = json.loads(json_data)
