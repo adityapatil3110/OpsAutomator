@@ -30,4 +30,4 @@
   #- { }
   register: snapshot_age_in_days
 - debug:
-    msg: "{{ snapshot_age_in_days }}"
+    msg: "{{ snapshot_age_in_days.stdout }}"
