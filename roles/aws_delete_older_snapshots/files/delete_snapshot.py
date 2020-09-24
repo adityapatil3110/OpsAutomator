@@ -77,7 +77,7 @@ for snapshot in snapshot_response['Snapshots']:
         AWS_REGION = sys.argv[3]
         SUBJECT = "Reporting Untagged Snapshots"
         ATTACHMENT = filename
-        BODY_TEXT = "Hello,\r\nThis mail is for the reporting of Non-Compliant Snapshots which do not have required tags."
+        BODY_TEXT = "Hello,\r\nThis mail is for the reporting of Non-Compliant Snapshots which are deleted because of expired ag limit."
         
         BODY_HTML = """\
         <html>
