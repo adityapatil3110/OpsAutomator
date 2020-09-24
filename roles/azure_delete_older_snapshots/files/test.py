@@ -19,7 +19,7 @@ for json_data in json_str_data:
   snapshot_response = json.loads(json_data, strict=False)
 #snapshot_response = json.dumps(snapshot_response)
 #snapshot_response = json.loads(snapshot_response)
-  print(snapshot_response)
+  print(snapshot_response[0]["name"])
 
 #for snapshot in snapshot_response:
   #  snapshot_name = snapshot[0]['diskSizeBytes']
