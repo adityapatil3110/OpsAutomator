@@ -13,7 +13,7 @@ json_str_data = '"""'+sys.argv[1]+'"""'
 json_data = (json_str_data.replace('\n\t', ''))
 #json_data = json.dumps(json_data)
   #json_data = json.dumps(json_str_data)
-  #print(json_data)
+print(json_data)
 #for snapshot in json_data:
 for json_data in json_str_data:
   snapshot_response = json.loads(json_data, strict=False)
