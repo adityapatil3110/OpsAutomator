@@ -23,7 +23,7 @@
 ######################################################################################################################################################################################################################################################################################
 - name: Create a file to store the Snapshot List json output
   copy:
-    dest: "/home/ansible/Azure_Old_Snapshot_List_{{ '%Y-%m-%d%H:%M:%S' | strftime(ansible_date_time.epoch) }}.json"
+    dest: "/home/ansible/Azure_Old_Snapshot_List.json"
     content: ""
     owner: ansible
     group: ansible
@@ -42,5 +42,5 @@
   #with_items: "{{ ensured_snapshot_details.stdout_lines }}"
   #- { }
   #register: snapshot_age_in_days
-#- debug:
-    #msg: "{{ snapshot_age_in_days.stdout }}"
+- debug:
+    msg: "{{ snapshot_age_in_days.stdout }}"
