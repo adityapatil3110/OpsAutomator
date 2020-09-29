@@ -33,7 +33,7 @@
 
 - name: Create a file to store the Untagged Snapshot Report
   copy:
-    dest: "/home/ansible/AWSUntaggedSnapshotReport{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}.csv"
+    dest: "/home/ansible/AWSUntaggedSnapshotReport{{ '%Y-%m-%d%H:%M:%S' | strftime(ansible_date_time.epoch) }}.csv"
     content: "{{ item }}"
     owner: ansible
     group: ansible
