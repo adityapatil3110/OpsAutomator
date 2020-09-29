@@ -24,7 +24,7 @@
 - name: Create a file to store the Snapshot List json output
   copy:
     dest: "/home/ansible/Azure_Old_Snapshot_List.json"
-    content: "{{ ensured_snapshot_details.stdout_lines }}"
+    #content: "{{ ensured_snapshot_details.stdout_lines }}"
     owner: ansible
     group: ansible
     mode: '0644'
@@ -35,10 +35,10 @@
 ######################################################################################################################################################################################################################################################################################
 # Get the Number of Days
 ###################################################################################################################################################################################################################################################################################### 
-#- name: Get the snapshot age in number of days using python
+- name: Get the snapshot age in number of days using python
   #script: files/calculateDays.py {{ item }} 
   #with_items: #"{{ ensured_snapshot_details['stdout_lines'][4] }}"
- # script: files/test.py "{{ ensured_snapshot_details.stdout }}" 
+  script: files/test1.py "{{ ensured_snapshot_details.stdout }}" 
   #with_items: "{{ ensured_snapshot_details.stdout_lines }}"
   #- { }
   #register: snapshot_age_in_days
