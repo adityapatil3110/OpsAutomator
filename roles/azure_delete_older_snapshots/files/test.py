@@ -12,7 +12,7 @@ import pandas as pd
 json_str_data = sys.argv[1]
 json_str_data = json_str_data.replace('[\n', '')
 json_str_data = json_str_data.replace('{\n    ', '{\n    "')
-json_str_data = json_str_data.replace(':', ':"')
+json_str_data = json_str_data.replace(':', '":"')
 json_str_data = json_str_data.replace(',\n', ',\n"')
 #json_data = json_str_data.replace('[\n', '')
 #json_data = json_data.replace(']', '')
