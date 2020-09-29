@@ -1,5 +1,4 @@
-[  
-    {
+{ 
       creationData: {
         createOption: Copy,
         galleryImageReference: null,
@@ -39,5 +38,4 @@
       timeCreated: 2020-08-07T08:38:18.335066+00:00,
       type: Microsoft.Compute/snapshots,
       uniqueId: e06cf143-3a1e-4fbe-8089-3b0fae6e9cd7
-    }
-  ]
+}
