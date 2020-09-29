@@ -3,7 +3,7 @@
 import os
 import datetime
 import sys
-import ndjon
+import ndjson
 import json
 from datetime import datetime
 import pandas as pd
