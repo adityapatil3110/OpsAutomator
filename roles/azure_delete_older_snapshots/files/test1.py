@@ -16,6 +16,8 @@ json_str_data = json_str_data.replace('": " {', '": {')
 json_str_data = json_str_data.replace('"\n}",', '},')
 json_str_data = json_str_data.replace('\n}",', '},')
 json_str_data = json_str_data.replace('" null"', 'null')
+json_str_data = json_str_data.replace('" null\n    }",', 'null\n      },')
+
 
 
 
