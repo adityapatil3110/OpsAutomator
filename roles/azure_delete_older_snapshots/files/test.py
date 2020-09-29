@@ -18,7 +18,7 @@ json_data = (json_str_data.replace('\n\t', ''))
 print(json_data)
 #for snapshot in json_data:
 for json_data in json_str_data:
-  snapshot_response = ndjson.loads(json_data, strict=False)
+  snapshot_response = ndjson.loads(json_data.replace("\\", r"\\"), strict=False)
 #snapshot_response = json.dumps(snapshot_response)
 #snapshot_response = json.loads(snapshot_response)
 print(snapshot_response)
