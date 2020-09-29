@@ -9,10 +9,10 @@ from datetime import datetime
 import pandas as pd
 
 #quotes = '"""'
-json_str_data = '"'+sys.argv[1]+'"'
-json_data = json_str_data.replace('[\n', '')
-json_data = json_data.replace(']', '')
-json_data = (json_data.replace('\n\t', ''))
+json_str_data = sys.argv[1]
+#json_data = json_str_data.replace('[\n', '')
+#json_data = json_data.replace(']', '')
+json_data = (json_str_data.replace('\n\t', ''))
 #json_data = json.dumps(json_data)
   #json_data = json.dumps(json_str_data)
 print(json_data)
