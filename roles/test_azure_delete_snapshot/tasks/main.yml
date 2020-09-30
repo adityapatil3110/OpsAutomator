@@ -54,3 +54,5 @@
     path: "{{ operate_results.stdout }}"
     key: SnapshotNames
   register: deleted_snapshot_names
+- debug:
+    msg: "{{ deleted_snapshot_names }}"
