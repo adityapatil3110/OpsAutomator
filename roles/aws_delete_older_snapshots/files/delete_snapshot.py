@@ -55,7 +55,7 @@ for snapshot in snapshot_response['Snapshots']:
     
     
     # Compare current age of snapshot with age_limit mentioned in snapshot's expiry tag
-    if day_old < limit:
+    if day_old > limit:
         snap_list.append(snapshot_id)
         start_time = str(create_date)
         ownerid_list.append(owner_id)
@@ -65,7 +65,7 @@ for snapshot in snapshot_response['Snapshots']:
         # Generate the Report name for deleted snapshots and push the column names and details of the deleted snapshots
         now = datetime.now()
         date_time = now.strftime("%Y-%m-%d, %H:%M:%S")
-        filename = '/home/ansible/DeletedSnapshotReport'+ date_time +'.csv'
+        filename = '/home/ansible/AWSDeletedSnapshotReport'+ date_time +'.csv'
         print (filename)
         dict = {'OwnerId':owner_id, 'SnapshotIDs':snap_list, 'StartTime':start_time, 'Age':day_old, 'Tags':tag_dict}
         df = pd.DataFrame(dict)
