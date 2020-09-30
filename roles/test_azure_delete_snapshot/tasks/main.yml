@@ -29,3 +29,6 @@
 - name: List Azure Snapshots having Expiry tag
   script: files/az_snapshot_list.sh "{{ item }}"
   with_items: "{{ raw_report['dest'] }}"
+  register: result
+- debug:
+    msg: "{ result }"
