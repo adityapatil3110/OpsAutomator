@@ -52,7 +52,7 @@
 - name: Read SnapshotNames from CSV file and return a dictionary
   read_csv:
     path: "{{ operate_results.stdout_lines[0] }}"
-    key: SnapshotNames
+    delimiter: ','
   register: names
 - debug:
     msg: "{{ names }}"
