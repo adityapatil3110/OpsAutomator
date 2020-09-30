@@ -4,11 +4,11 @@
 ###################################################################################################################################################################################################################################################################################### 
 - name: Create a file to store the Snapshot List json output
   copy:
-    dest: "/home/ansible/Azure_Old_Snapshot_List{{ '%Y-%m-%d%H:%M:%S' | strftime(ansible_date_time.epoch) }}.json"
+    dest: "/home/ansible/Azure_Old_Snapshot_List{{ '%Y-%m-%d' | strftime(ansible_date_time.epoch) }}.json"
     content: ""
     owner: ansible
     group: ansible
-    mode: '0644'
+    mode: '0666'
   register: raw_report
 - debug:
     msg: "{{ raw_report['dest'] }}"
@@ -27,9 +27,8 @@
 # Shell script to list azure snapshots with Expiry Tag
 ######################################################################################################################################################################################################################################################################################
 - name: List Azure Snapshots having Expiry tag
-  script: files/az_snapshot_list.sh 
-  #"{{ item }}"
-  #with_items: "{{ raw_report['dest'] }}"
-  register: result
+  script: files/az_snapshot_list.sh "{{ item }}"
+  with_items: "{{ raw_report['dest'] }}"
+  register: report
 - debug:
-    msg: "{ result }"
+    msg: "{ report }"
