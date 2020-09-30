@@ -19,4 +19,4 @@ snapshot_details = json.loads(f.read())
 for snapshot in snapshot_details:
     timeCreated = snapshot['timeCreated']
     
-print(timereated)
+print(timeCreated)
