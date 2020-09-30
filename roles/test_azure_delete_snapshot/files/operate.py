@@ -17,6 +17,11 @@ snapshot_details = json.loads(f.read())
 #print(snapshot_details[0]['timeCreated'])
 
 for snapshot in snapshot_details:
-    timeCreated = snapshot['timeCreated']
+    timeCreated_str = snapshot['timeCreated']
+    timeCreated = datetime.strptime(timeCreated_str[:-6].replace("T", " "), '%Y-%m-%d %H:%M:%S.%f')
+    snapshot_name = snapshot['name']
+    location = snapshot['location']
+    expiry_value = snapshot['tags']['Expiry']
+    resource_group = snapshot['resourceGroup']
     
 print(timeCreated)
