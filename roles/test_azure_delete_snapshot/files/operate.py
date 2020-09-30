@@ -9,6 +9,7 @@ import pandas as pd
 
 
 expiry_value = int()
+limit = expiry_value
 snap_list = []
 start_time_list = []
 snapshot_age_list = []
@@ -39,7 +40,7 @@ for snapshot in snapshot_details:
     tag_dict = snapshot['tags']
 
 
-    if snapshot_age > expiry_value:
+    if snapshot_age > limit:
         snap_list.append(snapshot_name)   
         start_time = str(timeCreated)
         start_time_list.append(start_time)
