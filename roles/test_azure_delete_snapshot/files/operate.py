@@ -50,8 +50,8 @@ for snapshot in snapshot_details:
         now = datetime.now()
         date_time = now.strftime("%Y-%m-%d, %H:%M:%S")
         filename = '/home/ansible/AzureDeletedSnapshotReport'+ date_time +'.csv'
-        #print (filename)
+        print (filename)
         dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'Age':snapshot_age_list, 'Expiry_limit_in_Days':tag_dict}
         df = pd.DataFrame(dict)
         df.to_csv(filename, index=False)
-        print(snap_list)
+        #print(snap_list)

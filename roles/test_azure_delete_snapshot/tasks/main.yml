@@ -43,4 +43,14 @@
   script: files/operate.py "{{ json_file['dest'] }}"
   register: operate_results
 - debug:
-    msg: "{{ operate_results }}"
+    msg: "{{ operate_results.stdout }}"
+
+
+######################################################################################################################################################################################################################################################################################
+# Read SnapshotNames from the csv report
+######################################################################################################################################################################################################################################################################################
+- name: Read SnapshotNames from CSV file and return a dictionary
+  community.general.read_csv:
+    path: "{{ operate_results.stdout }}"
+    key: SnapshotNames
+  register: deleted_snapshot_names
