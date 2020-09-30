@@ -48,7 +48,7 @@ for snapshot in snapshot_details:
 
         # Generate the Report name for deleted snapshots and push the column names and details of the deleted snapshots
         now = datetime.now()
-        date_time = now.strftime("%Y-%m-%d, %H:%M:%S")
+        date_time = now.strftime("%Y-%m-%d %H:%M:%S")
         filename = '/home/ansible/AzureDeletedSnapshotReport'+ date_time +'.csv'
         print (filename)
         dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'Age':snapshot_age_list, 'Expiry_limit_in_Days':tag_dict}
