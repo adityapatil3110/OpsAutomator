@@ -49,10 +49,10 @@
 ######################################################################################################################################################################################################################################################################################
 # Read SnapshotNames from the csv report
 ######################################################################################################################################################################################################################################################################################
-- name: Read SnapshotNames from CSV file and return a dictionary
-  community.general.read_csv:
-    path: "{{ operate_results.stdout }}"
-    key: SnapshotNames
-  register: deleted_snapshot_names
-- debug:
-    msg: "{{ deleted_snapshot_names }}"
+#- name: Read SnapshotNames from CSV file and return a dictionary
+ # community.general.read_csv:
+  #  path: "{{ operate_results.stdout }}"
+   # key: SnapshotNames
+  #register: deleted_snapshot_names
+#- debug:
+   # msg: "{{ deleted_snapshot_names }}"
