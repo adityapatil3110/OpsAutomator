@@ -8,7 +8,7 @@
     content: ""
     owner: ansible
     group: ansible
-    mode: '0666'
+    mode: '0744'
   register: raw_report
 - debug:
     msg: "{{ raw_report['dest'] }}"
