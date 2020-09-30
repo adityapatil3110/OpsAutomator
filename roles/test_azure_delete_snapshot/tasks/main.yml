@@ -11,4 +11,4 @@
     mode: '0644'
   register: raw_report
 - debug:
-    msg: "{{ raw_report }}"
+    msg: "{{ raw_report['dest'] }}"
