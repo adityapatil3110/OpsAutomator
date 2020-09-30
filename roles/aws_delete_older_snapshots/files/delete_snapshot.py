@@ -68,6 +68,7 @@ for snapshot in snapshot_response['Snapshots']:
         filename = '/home/ansible/AWSDeletedSnapshotReport'+ date_time +'.csv'
         print (filename)
         dict = {'OwnerId':owner_id, 'SnapshotIDs':snap_list, 'StartTime':start_time, 'Age':day_old, 'Tags':tag_dict}
+        print(dict)
         df = pd.DataFrame(dict)
         df.to_csv(filename, index=False)
         
