@@ -30,7 +30,7 @@
 # Shell script to list azure snapshots with Expiry Tag
 ######################################################################################################################################################################################################################################################################################
 - name: List Azure Snapshots having Expiry tag
-  script: files/az_snapshot_list.sh "{{ item }}"
+  shell: files/az_snapshot_list.sh > "{{ item }}"
   with_items: "{{ json_file['dest'] }}"
   register: report
 - debug:
