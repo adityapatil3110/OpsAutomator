@@ -25,3 +25,7 @@ for snapshot in snapshot_details:
     resource_group = snapshot['resourceGroup']
     
 print(timeCreated)
+print(snapshot_name)
+print(location)
+print(expiry_value)
+print(resource_group)
