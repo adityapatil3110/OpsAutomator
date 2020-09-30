@@ -16,7 +16,7 @@ snapshot_details = json.loads(f.read())
 
 #print(snapshot_details[0]['timeCreated'])
 
-for snapshot in snapshot_details[]:
+for snapshot in snapshot_details:
     timeCreated = snapshot[0]['timeCreated']
     
 print(timereated)
