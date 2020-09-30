@@ -37,7 +37,7 @@ for snapshot in snapshot_details:
     location = snapshot['location']
     expiry_value = snapshot['tags']['Expiry']
     resource_group = snapshot['resourceGroup']
-    tag_dict = snapshot['tags']
+    tag_dict = snapshot['tags']['Expiry']
 
 
     if snapshot_age > limit:
@@ -51,7 +51,7 @@ for snapshot in snapshot_details:
         date_time = now.strftime("%Y-%m-%d, %H:%M:%S")
         filename = '/home/ansible/AzureDeletedSnapshotReport'+ date_time +'.csv'
         print (filename)
-        dict = {'SnapshotNames':snap_list, 'StartTime':start_time, 'Age':snapshot_age, 'Tags':tag_dict}
+        dict = {'SnapshotNames':snap_list, 'StartTime':start_time, 'Age':snapshot_age, 'Expiry':tag_dict}
         print(dict)
         df = pd.DataFrame(dict)
         df.to_csv(filename, index=False)
