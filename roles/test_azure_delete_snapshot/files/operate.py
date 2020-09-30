@@ -14,4 +14,9 @@ f = open( snapshot_report_file, 'r' )
 
 snapshot_details = json.loads(f.read())
 
-print(snapshot_details[0]['timeCreated'])
+#print(snapshot_details[0]['timeCreated'])
+
+for snapshot in snapshot_details[]:
+    timeCreated = snapshot[0]['timeCreated']
+    
+print(timereated)
