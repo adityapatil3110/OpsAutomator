@@ -34,4 +34,4 @@
   with_items: "{{ json_file['dest'] }}"
   register: report
 - debug:
-    msg: "{ report }"
+    msg: "{{ report }}"
