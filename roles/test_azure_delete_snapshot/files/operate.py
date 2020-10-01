@@ -51,12 +51,12 @@ for snapshot in snapshot_details:
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
         filename = '/home/ansible/AzureDeletedSnapshotReport'+ date_time +'.csv'
         #print (filename)
-        dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'Age':snapshot_age_list, 'Expiry_limit_in_Days':tag_dict}
+        report_dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'Age':snapshot_age_list, 'Expiry_limit_in_Days':tag_dict}
         df = pd.DataFrame(dict)
         df.to_csv(filename, index=False)
         #print(*snap_list, sep = ",\n")
         #snap_names = {key: test_dict[key] for key in test_dict.values()}
-        for k in dict:
-            snap_names = k['SnapshotNames']
-        print(snap_names)   
+        for key,value in report_dict.items():
+            if key == 'SnapshotNames':
+                print(value)   
     
