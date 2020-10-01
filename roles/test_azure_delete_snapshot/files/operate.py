@@ -41,10 +41,11 @@ for snapshot in snapshot_details:
     print(snapshot_name)
 
     if snapshot_age > limit:
-        snap_list.append(snapshot_name)   
-        start_time = str(timeCreated)
-        start_time_list.append(start_time)
-        snapshot_age_list.append(snapshot_age)
+        for snapshot in snapshot_details:
+            snap_list.append(snapshot['name'])   
+            start_time = str(timeCreated)
+            start_time_list.append(start_time)
+            snapshot_age_list.append(snapshot_age)
         report_dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'Age':snapshot_age_list, 'Expiry_limit_in_Days':tag_dict}
         # Generate the Report name for deleted snapshots and push the column names and details of the deleted snapshots
         now = datetime.now()
@@ -53,7 +54,7 @@ for snapshot in snapshot_details:
         #print (filename)
         df = pd.DataFrame(report_dict)
         df.to_csv(filename, index=False)
-        #print(report_dict)
+        print(report_dict)
         #print(*snap_list, sep = ",\n")
         #snap_names = {key: test_dict[key] for key in test_dict.values()}
         #for key,value in report_dict.items():
