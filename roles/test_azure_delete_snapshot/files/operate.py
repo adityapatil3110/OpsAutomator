@@ -54,4 +54,9 @@ for snapshot in snapshot_details:
         dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'Age':snapshot_age_list, 'Expiry_limit_in_Days':tag_dict}
         df = pd.DataFrame(dict)
         df.to_csv(filename, index=False)
-        print(*snap_list, sep = ",\n")
+        #print(*snap_list, sep = ",\n")
+        #snap_names = {key: test_dict[key] for key in test_dict.values()}
+        for k in dict:
+            snap_names[] = d['SnapshotNames']
+        print(snap_names)   
+    
