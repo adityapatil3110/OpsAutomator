@@ -54,9 +54,10 @@ for snapshot in snapshot_details:
         report_dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'Age':snapshot_age_list, 'Expiry_limit_in_Days':tag_dict}
         df = pd.DataFrame(report_dict)
         df.to_csv(filename, index=False)
+        print(report_dict)
         #print(*snap_list, sep = ",\n")
         #snap_names = {key: test_dict[key] for key in test_dict.values()}
-        for key,value in report_dict.items():
-            if key == 'SnapshotNames':
-                print(value)   
+        #for key,value in report_dict.items():
+         #   if key == 'SnapshotNames':
+          #      print(value)   
     
