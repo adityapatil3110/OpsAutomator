@@ -46,7 +46,7 @@ for snapshot in snapshot_details:
             start_time = str(timeCreated)
             start_time_list.append(start_time)
             snapshot_age_list.append(snapshot_age)
-            report_dict = {'SnapshotNames':snapshot_name, 'StartTime':start_time, 'Age':snapshot_age, 'Expiry_limit_in_Days':tag_dict}
+        report_dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'Age':snapshot_age_list, 'Expiry_limit_in_Days':tag_dict}
         # Generate the Report name for deleted snapshots and push the column names and details of the deleted snapshots
         now = datetime.now()
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
@@ -54,10 +54,5 @@ for snapshot in snapshot_details:
         #print (filename)
         df = pd.DataFrame.from_dict(report_dict)
         df.to_csv(filename, index=False)
-        print(report_dict)
-        #print(*snap_list, sep = ",\n")
-        #snap_names = {key: test_dict[key] for key in test_dict.values()}
-        #for key,value in report_dict.items():
-         #   if key == 'SnapshotNames':
-          #      print(value)   
+        
     
