@@ -57,6 +57,6 @@ for snapshot in snapshot_details:
         #print(*snap_list, sep = ",\n")
         #snap_names = {key: test_dict[key] for key in test_dict.values()}
         for k in dict:
-            snap_names[] = d['SnapshotNames']
+            snap_names = d['SnapshotNames']
         print(snap_names)   
     
