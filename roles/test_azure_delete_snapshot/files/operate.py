@@ -53,7 +53,7 @@ for snapshot in snapshot_details:
         snap_sku_tier_list.append(sku_tier)
         snap_rg_list.append(resource_group)
         snap_id_list.append(snapshot_id)
-        dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'SnapshotAge':snapshot_age_list, 'Expiry_Limit_in_Days':tag_dict, 'Resource_Group':snap_rg_list, 'Location':snap_location_list, 'SKU_TIER':snap_sku_tier_list, 'Snapshot_id':snaps_id_list}
+        dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'SnapshotAge':snap_age_list, 'Expiry_Limit_in_Days':tag_dict, 'Resource_Group':snap_rg_list, 'Location':snap_location_list, 'SKU_TIER':snap_sku_tier_list, 'Snapshot_id':snaps_id_list}
         # Generate the Report name for deleted snapshots and push the column names and details of the deleted snapshots
         now = datetime.now()
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
