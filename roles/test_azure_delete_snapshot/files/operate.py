@@ -48,7 +48,7 @@ for snapshot in snapshot_details:
         snap_list.append(snapshot_name)   
         start_time = str(timeCreated)
         start_time_list.append(start_time)
-        snapshot_age_list.append(snapshot_age)
+        snap_age_list.append(snapshot_age)
         snap_location_list.append(location) 
         snap_sku_tier_list.append(sku_tier)
         snap_rg_list.append(resource_group)
