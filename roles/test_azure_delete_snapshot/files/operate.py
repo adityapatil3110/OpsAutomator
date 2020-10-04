@@ -47,7 +47,7 @@ for snapshot in snapshot_details:
             start_time_list.append(start_time)
             snapshot_age_list.append(snapshot_age)
             
-        dict = {'OwnerId':owner_id, 'SnapshotIDs':snap_list, 'StartTime':start_time, 'Age':day_old, 'Tags':tag_dict}
+        dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'SnapshotAge':snapshot_age_list, 'Expiry_Limit_in_Days':tag_dict}
         print(snap_list)
         # Generate the Report name for deleted snapshots and push the column names and details of the deleted snapshots
         now = datetime.now()
