@@ -12,7 +12,11 @@ expiry_value = int()
 limit = expiry_value
 snap_list = []
 start_time_list = []
-snapshot_age_list = []
+snap_age_list = []
+snap_location_list = []
+snap_sku_tier_list = []
+snap_rg_list = []
+snap_id_list = []
 tag_dict = {}
 
 snapshot_report_file = sys.argv[1]
@@ -32,19 +36,24 @@ for snapshot in snapshot_details:
     timeCreated_str = snapshot['timeCreated']
     timeCreated = datetime.strptime(timeCreated_str[:-6].replace("T", " "), '%Y-%m-%d %H:%M:%S.%f')
     snapshot_name = snapshot['name']
-    print(snapshot_name)
     location = snapshot['location']
+    sku_tier = snapshot['sku']['tier']
     expiry_value = snapshot['tags']['Expiry']
     resource_group = snapshot['resourceGroup']
+    snapshot_id = snapshot['id']
     tag_dict = snapshot['tags']['Expiry']
     snapshot_age = days_old(timeCreated)
-    #print(snapshot_name)
     if snapshot_age > limit:
-        snap_list.append(snapshot['name'])   
+        print(snapshot_name)
+        snap_list.append(snapshot_name)   
         start_time = str(timeCreated)
         start_time_list.append(start_time)
         snapshot_age_list.append(snapshot_age)
-        dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'SnapshotAge':snapshot_age_list, 'Expiry_Limit_in_Days':tag_dict}
+        snap_location_list.append(location) 
+        snap_sku_tier_list.append(sku_tier)
+        snap_rg_list.append(resource_group)
+        snap_id_list.append(snapshot_id)
+        dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'SnapshotAge':snapshot_age_list, 'Expiry_Limit_in_Days':tag_dict, 'Resource_Group':snap_rg_list, 'Location':snap_location_list, 'SKU_TIER':snap_sku_tier_list, 'Snapshot_id':snaps_id_list}
         # Generate the Report name for deleted snapshots and push the column names and details of the deleted snapshots
         now = datetime.now()
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
