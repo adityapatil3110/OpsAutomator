@@ -61,6 +61,4 @@ for snapshot in snapshot_details:
         #report_dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'SnapshotAge':snapshot_age_list, 'Expiry_Limit_in_Days':tag_dict}
         #print (filename)
         df = pd.DataFrame(dict)
-        df.to_csv(filename, index=False) 
-        
-print(snap_list)
+        df.to_csv(filename, index=False)   
