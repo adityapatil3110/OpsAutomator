@@ -71,8 +71,7 @@ for snapshot in snapshot_details:
         #get arguments for emai details and send email
         SENDER = sys.argv[2]
         RECIPIENT = sys.argv[3]
-        SGKEY = sys.argv[4]
-        
+                
         message = Mail(
             from_email=SENDER,
             to_emails=RECIPIENT,
