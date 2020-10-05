@@ -8,7 +8,8 @@ from datetime import datetime
 import pandas as pd
 import base64
 import os
-from sendgrid.helpers.mail import (Mail, Attachment, FileContent, FileName, FileType, Disposition, ContentId)
+import sendgrid
+from sendgrid.helpers.mail import *
 from sendgrid import SendGridAPIClient
 
 
