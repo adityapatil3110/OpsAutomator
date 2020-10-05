@@ -53,7 +53,7 @@
 # Read SnapshotNames from "{{ operate_results.stdout_lines }}" to delete
 ######################################################################################################################################################################################################################################################################################
 #- name: Read SnapshotNames from "{{ operate_results.stdout_lines }}" to delete
- # shell: az snapshot show --name "{{ item }}"
+ # shell: az snapshot delete --name "{{ item }}"
   #with_items: "{{ operate_results.stdout_lines }}"
  # register: delete_result
 #- debug: 
