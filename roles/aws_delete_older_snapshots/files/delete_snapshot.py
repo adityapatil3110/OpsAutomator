@@ -76,7 +76,7 @@ for snapshot in snapshot_response['Snapshots']:
         SENDER = sys.argv[1]
         RECIPIENT = sys.argv[2]
         AWS_REGION = sys.argv[3]
-        SUBJECT = "Reporting Untagged Snapshots"
+        SUBJECT = "AWS expired snapshot deletion report "
         ATTACHMENT = filename
         BODY_TEXT = "Hello,\r\nThis mail is for the reporting of Non-Compliant Snapshots which are deleted because of expired ag limit."
         
@@ -102,17 +102,12 @@ for snapshot in snapshot_response['Snapshots']:
         msg['To'] = RECIPIENT
         
         msg_body = MIMEMultipart('alternative')
-        
         textpart = MIMEText(BODY_TEXT.encode(CHARSET), 'plain', CHARSET)
         htmlpart = MIMEText(BODY_HTML.encode(CHARSET), 'html', CHARSET)
-        
         msg_body.attach(textpart)
         msg_body.attach(htmlpart)
-        
         att = MIMEApplication(open(ATTACHMENT, 'rb').read())
-        
         att.add_header('Content-Disposition','attachment',filename=os.path.basename(ATTACHMENT))
-        
         msg.attach(msg_body)
         
         msg.attach(att)

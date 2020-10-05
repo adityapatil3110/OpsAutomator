@@ -40,7 +40,7 @@
 # Perform Operations on snapshot report using python to filter out snapshot details
 ######################################################################################################################################################################################################################################################################################
 - name: Filter Out Snapshot Details
-  script: files/operate.py "{{ json_file['dest'] }}"
+  script: files/operate.py "{{ json_file['dest'] }}" {{ sender_identity }} {{ reciever_identity }} {{ sgkey }}
   register: operate_results
 #- debug:
    # msg: "{{ operate_results.stdout_lines }}"
@@ -52,10 +52,17 @@
 ######################################################################################################################################################################################################################################################################################
 # Read SnapshotNames from "{{ operate_results.stdout_lines }}" to delete
 ######################################################################################################################################################################################################################################################################################
-- name: Read SnapshotNames from "{{ operate_results.stdout_lines }}" to delete
-  shell: az snapshot show --name "{{ item }}"
-  with_items: "{{ operate_results.stdout_lines }}"
-  register: delete_result
-- debug: 
-    msg: "{{ delete_result.stdout }}"
+#- name: Read SnapshotNames from "{{ operate_results.stdout_lines }}" to delete
+ # shell: az snapshot show --name "{{ item }}"
+  #with_items: "{{ operate_results.stdout_lines }}"
+ # register: delete_result
+#- debug: 
+ #   msg: "{{ delete_result.stdout }}"
 
+######################################################################################################################################################################################################################################################################################
+# Delete the json file created to store snapshot list result
+######################################################################################################################################################################################################################################################################################
+- name: Delete the json file created to store snapshot list result
+  file:
+    path: "{{ json_file['dest'] }}"
+    state: absent

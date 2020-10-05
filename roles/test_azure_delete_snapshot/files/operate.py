@@ -6,6 +6,10 @@ import sys
 import json
 from datetime import datetime
 import pandas as pd
+import base64
+import os
+from sendgrid.helpers.mail import (Mail, Attachment, FileContent, FileName, FileType, Disposition, ContentId)
+from sendgrid import SendGridAPIClient
 
 
 expiry_value = int()
@@ -61,4 +65,48 @@ for snapshot in snapshot_details:
         #report_dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'SnapshotAge':snapshot_age_list, 'Expiry_Limit_in_Days':tag_dict}
         #print (filename)
         df = pd.DataFrame(dict)
-        df.to_csv(filename, index=False)   
+        df.to_csv(filename, index=False)
+        
+        
+        #get arguments for emai details and send email
+        SENDER = sys.argv[2]
+        RECIPIENT = sys.argv[3]
+        SGKEY = sys.argv[4]
+        
+        message = Mail(
+            from_email=SENDER,
+            to_emails=RECIPIENT,
+            subject='Azure expired snapshot deletion report',
+            html_content="""\
+            <html>
+            <head></head>
+            <body>
+            <h4>Hello,</h4>
+            <p>Please refer to the attached excel sheet for the Snapshot Deletion Report.</p>
+            <h4>Regards,</h4>
+            <h5>Aditya Patil</h5>
+            </body>
+            </html>
+            """)
+        file_path = filename
+        with open(file_path, 'rb') as f:
+            data = f.read()
+            f.close()
+        encoded = base64.b64encode(data).decode()
+        attachment = Attachment()
+        attachment.file_content = FileContent(encoded)
+        attachment.file_type = FileType('text/csv')
+        attachment.file_name = FileName(filename)
+        attachment.disposition = Disposition('attachment')
+        attachment.content_id = ContentId('AZ Snapshot Deletion')
+        message.attachment = attachment
+        try:
+            sendgrid_client = SendGridAPIClient(os.environ.get(SGKEY))
+            response = sendgrid_client.send(message)
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
+        except Exception as e:
+            print(e.message)
+    else:
+         print("There are no snapshots older than defined Expiry")
