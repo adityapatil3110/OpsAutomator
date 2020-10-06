@@ -40,7 +40,8 @@
 # Perform Operations on snapshot report using python to filter out snapshot details
 ######################################################################################################################################################################################################################################################################################
 - name: Filter Out Snapshot Details
-  script: files/operate.py "{{ json_file['dest'] }}" {{ sender_identity }} {{ reciever_identity }}
+  script: files/operate.py "{{ json_file['dest'] }}"
+  # {{ sender_identity }} {{ reciever_identity }}
   register: operate_results
 #- debug:
    # msg: "{{ operate_results.stdout_lines }}"

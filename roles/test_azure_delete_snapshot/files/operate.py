@@ -69,12 +69,12 @@ for snapshot in snapshot_details:
         
         
         #get arguments for emai details and send email
-        SENDER = sys.argv[2]
-        RECIPIENT = sys.argv[3]
+        #SENDER = sys.argv[2]
+        #RECIPIENT = sys.argv[3]
                 
         message = Mail(
-            from_email=SENDER,
-            to_emails=RECIPIENT,
+            from_email='patiladi3110@gail.com',
+            to_emails='gcptesting4534@gmail.com',
             subject='Azure expired snapshot deletion report',
             html_content="""\
             <html>
