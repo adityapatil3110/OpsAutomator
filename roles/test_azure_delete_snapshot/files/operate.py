@@ -76,17 +76,7 @@ for snapshot in snapshot_details:
             from_email='patiladi3110@gail.com',
             to_emails='gcptesting4534@gmail.com',
             subject='Azure expired snapshot deletion report',
-            html_content="""\
-            <html>
-            <head></head>
-            <body>
-            <h4>Hello,</h4>
-            <p>Please refer to the attached excel sheet for the Snapshot Deletion Report.</p>
-            <h4>Regards,</h4>
-            <h5>Aditya Patil</h5>
-            </body>
-            </html>
-            """)
+            html_content='<html><head>Hi</head><body><h4>Hello Admin,</h4><p>Please refer to the attached excel sheet for the Snapshot Deletion Report.</p><h4>Regards,</h4><h5>Aditya</h5></body></html>')
         file_path = filename
         with open(file_path, 'rb') as f:
             data = f.read()
