@@ -90,7 +90,7 @@ for snapshot in snapshot_details:
         attachment.content_id = ContentId('Snapshot Deletion')
         message.attachment = attachment
         try:
-            sendgrid_client = SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
+            sendgrid_client = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
             response = sendgrid_client.send(message)
             #print(response.status_code)
             #print(response.body)
