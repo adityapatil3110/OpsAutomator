@@ -71,9 +71,7 @@ for snapshot in snapshot_details:
         #get arguments for emai details and send email
         #SENDER = sys.argv[2]
         #RECIPIENT = sys.argv[3]
-        
-        SENDGRID_API_KEY='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'
-                
+                        
         message = Mail(
             from_email='patiladi3110@gmail.com',
             to_emails='gcptesting4534@gmail.com',
@@ -92,7 +90,7 @@ for snapshot in snapshot_details:
         attachment.content_id = ContentId('Snapshot Deletion')
         message.attachment = attachment
         try:
-            sendgrid_client = SendGridAPIClient(os.environ.get(SENDGRID_API_KEY))
+            sendgrid_client = SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
             response = sendgrid_client.send(message)
             #print(response.status_code)
             #print(response.body)
