@@ -84,10 +84,10 @@ for snapshot in snapshot_details:
         encoded = base64.b64encode(data).decode()
         attachment = Attachment()
         attachment.file_content = FileContent(encoded)
-        attachment.file_type = FileType('text/csv')
+        attachment.file_type = FileType('application/csv')
         attachment.file_name = FileName(filename)
         attachment.disposition = Disposition('attachment')
-        attachment.content_id = ContentId('AZ Snapshot Deletion')
+        attachment.content_id = ContentId('Snapshot Deletion')
         message.attachment = attachment
         try:
             sendgrid_client = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
@@ -96,6 +96,6 @@ for snapshot in snapshot_details:
             #print(response.body)
             #print(response.headers)
         except Exception as e:
-            print(e)
+            print(e.message)
     else:
          print("There are no snapshots older than defined Expiry")
