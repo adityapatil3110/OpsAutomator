@@ -62,6 +62,7 @@ for snapshot in snapshot_details:
         now = datetime.now()
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
         filename = '/home/ansible/AzureDeletedSnapshotReport'+ date_time +'.csv'
+        name = filename.strip("/home/ansible/")
         #report_dict = {'SnapshotNames':snap_list, 'StartTime':start_time_list, 'SnapshotAge':snapshot_age_list, 'Expiry_Limit_in_Days':tag_dict}
         #print (filename)
         df = pd.DataFrame(dict)
@@ -86,7 +87,7 @@ for snapshot in snapshot_details:
         attachment = Attachment()
         attachment.file_content = FileContent(encoded)
         attachment.file_type = FileType('text/csv')
-        attachment.file_name = FileName(filename)
+        attachment.file_name = FileName(name)
         attachment.disposition = Disposition('attachment')
         attachment.content_id = ContentId('Snapshot Deletion')
         message.attachment = attachment
