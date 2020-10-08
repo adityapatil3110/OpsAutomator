@@ -69,12 +69,13 @@ for snapshot in snapshot_details:
         
         
         #get arguments for email details and send email
-        #"SENDER = sys.argv[2]
-        #"RECIPIENT = sys.argv[3]
+        SENDER = sys.argv[2]
+        RECIPIENT = sys.argv[3]
+        SENDGRID_API_KEY= sys.argv[4]
                         
         message = Mail(
-            from_email='patiladi3110@gmail.com',
-            to_emails='gcptesting4534@gmail.com',
+            from_email=SENDER,
+            to_emails=RECIPIENT,
             subject='Azure expired snapshot deletion report',
             html_content='<html><head>Hi</head><body><h4>Hello Admin,</h4><p>Please refer to the attached excel sheet for the Snapshot Deletion Report.</p><h4>Regards,</h4><h5>Aditya</h5></body></html>')
         file_path = filename
@@ -90,7 +91,7 @@ for snapshot in snapshot_details:
         attachment.content_id = ContentId('Snapshot Deletion')
         message.attachment = attachment
         try:
-            sendgrid_client = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+            sendgrid_client = SendGridAPIClient(SENDGRID_API_KEY)
             response = sendgrid_client.send(message)
             print(response.status_code)
             print(response.body)
