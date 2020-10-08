@@ -5,7 +5,7 @@ import sys
 
 raw_file = sys.argv[1]
 
-header = ['Name', 'ResourceGroup', 'StartTime', 'SKU Tier', 'Location', 'Tags', 'SnapshotID']
+header = ['Name', 'ResourceGroup', 'StartTime', 'SKU Tier', 'Location', 'SnapshotID']
 
 
 df = pd.read_csv(raw_file, header=None)
