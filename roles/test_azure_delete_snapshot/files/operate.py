@@ -84,7 +84,7 @@ for snapshot in snapshot_details:
         encoded = base64.b64encode(data).decode()
         attachment = Attachment()
         attachment.file_content = FileContent(encoded)
-        attachment.file_type = FileType('application/csv')
+        attachment.file_type = FileType('text/csv')
         attachment.file_name = FileName(filename)
         attachment.disposition = Disposition('attachment')
         attachment.content_id = ContentId('Snapshot Deletion')
@@ -92,9 +92,9 @@ for snapshot in snapshot_details:
         try:
             sendgrid_client = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
             response = sendgrid_client.send(message)
-            #print(response.status_code)
-            #print(response.body)
-            #print(response.headers)
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
         except Exception as e:
             print(e)
     else:
