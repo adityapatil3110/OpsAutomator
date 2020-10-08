@@ -3,4 +3,4 @@
   #connection: local
   become: true
   roles:
-    - {role: test_azure_delete_snapshot}
+    - {role: azure_delete_older_snapshots}
