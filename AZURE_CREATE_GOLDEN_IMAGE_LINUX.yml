@@ -4,4 +4,4 @@
   connection: local
   become: true
   roles:
-    - {role: azure_create_golden_image}
+    - {role: azure_create_golden_image_linux}
