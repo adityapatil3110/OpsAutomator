@@ -1,6 +1,7 @@
 ---
-- hosts: 35.225.93.179
-  #connection: local
+- hosts: localhost
+  #35.225.93.179
+  connection: local
   become: true
   roles:
     - {role: aws_create_golden_image}

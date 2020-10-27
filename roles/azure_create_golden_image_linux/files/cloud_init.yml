@@ -1,0 +1,5 @@
+runcmd:
+- sudo yum install mariadb-server -y
+- sudo systemctl start mariadb
+- sudo systemtl status mariadb
+- sudo systemctl enable mariadb
