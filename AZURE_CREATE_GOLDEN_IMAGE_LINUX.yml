@@ -1,7 +1,7 @@
 ---
-- hosts: localhost
+- hosts: 35.225.93.179
   #35.225.93.179
-  connection: local
-  become: false
+  #connection: local
+  become: true
   roles:
     - {role: azure_create_golden_image_linux}
