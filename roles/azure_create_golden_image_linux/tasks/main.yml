@@ -1,3 +1,4 @@
+---
 - name: Create VM with defaults
   azure_rm_virtualmachine:
     resource_group: "{{ resource_group }}" #CLDOPSAUTOMATOR01
