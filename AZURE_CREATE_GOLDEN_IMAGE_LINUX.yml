@@ -1,5 +1,5 @@
 ---
-- hosts: 35.225.93.179
+- hosts: 34.123.237.62
   #35.225.93.179
   #connection: local
   become: true
