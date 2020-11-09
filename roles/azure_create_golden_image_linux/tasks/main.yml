@@ -1,36 +1,39 @@
 ---
-- name: Create VM with defaults
-  azure_rm_virtualmachine:
-    resource_group: "{{ resource_group }}" #CLDOPSAUTOMATOR01
-    name: CLDOPSAUTOMATORTEST12
-    vm_size: "{{ vm_size }}" #Standard_DS1_v2
-    admin_username: "{{ admin_username }}"
-    admin_password: "{{ admin_password }}" 
-    virtual_network_name: "{{ virtual_network_name }}" #CIS_Practice
-    virtual_network_resource_group: "{{ virtual_network_resource_group }}" #Network_Resource_Group
-    subnet_name: "{{ subnet_name }}" #CLD_App_Subnet
-    state: present
-    started: no
-    append_tags: True
-    os_disk_size_gb: 10
-    tags:
-      Team: "CLD"
-      Autoshutdown: "yes"
-      Environment: "POC"
-      Name: "CLDOPSAUTOMATORTEST12"
-      Owner: "Aditya Patil"
-      Project: "OpsAutomator"
-      Role: "Opsautomator golden image vm"
-      Timeline: "10"
-      WeekDayShutdownTime: "19:00"
-      WeekendShutdown: "Yes"
-      WeekDayStartTime: "Manual" 
-    image:
-      offer: CentOS
-      publisher: OpenLogic 7.7
-      sku: '7.7'
-      version: latest
-    custom_data: "{{ lookup('file', 'cloud_init.yml') }}"
-    register: result
-- debug:
-    msg: "{{ result }}" 
+- hosts: localhost
+  connection: local
+  tasks:
+  - name: Create VM with defaults
+    azure_rm_virtualmachine:
+      resource_group: "{{ resource_group }}" #CLDOPSAUTOMATOR01
+      name: CLDOPSAUTOMATORTEST12
+      vm_size: "{{ vm_size }}" #Standard_DS1_v2
+      admin_username: "{{ admin_username }}"
+      admin_password: "{{ admin_password }}" 
+      virtual_network_name: "{{ virtual_network_name }}" #CIS_Practice
+      virtual_network_resource_group: "{{ virtual_network_resource_group }}" #Network_Resource_Group
+      subnet_name: "{{ subnet_name }}" #CLD_App_Subnet
+      state: present
+      started: no
+      append_tags: True
+      os_disk_size_gb: 10
+      tags:
+        Team: "CLD"
+        Autoshutdown: "yes"
+        Environment: "POC"
+        Name: "CLDOPSAUTOMATORTEST12"
+        Owner: "Aditya Patil"
+        Project: "OpsAutomator"
+        Role: "Opsautomator golden image vm"
+        Timeline: "10"
+        WeekDayShutdownTime: "19:00"
+        WeekendShutdown: "Yes"
+        WeekDayStartTime: "Manual" 
+      image:
+        offer: CentOS
+        publisher: OpenLogic 7.7
+        sku: '7.7'
+        version: latest
+      custom_data: "{{ lookup('file', 'cloud_init.yml') }}"
+      register: result
+  - debug:
+      msg: "{{ result }}" 
